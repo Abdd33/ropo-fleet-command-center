@@ -1,0 +1,137 @@
+/* 2026-11-08: information hierarchy, Field meter and parking canvas. */
+.revision-dashboard .main-grid{grid-template-columns:minmax(0,22fr) minmax(0,50fr) minmax(0,28fr)}
+.revision-dashboard .left-column{display:flex;flex-direction:column;gap:24px;padding-right:20px}
+.revision-dashboard .right-column{display:grid;grid-template-rows:auto minmax(0,1fr);gap:20px;padding-left:20px}
+.revision-dashboard .center-column{grid-template-rows:minmax(0,1fr) minmax(230px,29%);gap:20px}
+.revision-dashboard .map-module{grid-template-rows:36px minmax(0,1fr) 50px}
+.revision-dashboard .map-module>.section-heading{padding-bottom:12px}
+.revision-dashboard .map-stage>.map-canvas{position:absolute;inset:0;width:100%;height:100%}
+.revision-dashboard .section-heading h2{font-size:15px;font-weight:550}
+.revision-dashboard .map-source{font-size:9px;opacity:.65;letter-spacing:.3px}
+.revision-dashboard .map-legend{justify-content:flex-end;padding:8px 12px;gap:0;background:transparent;border:0;bottom:0;pointer-events:none}
+.revision-dashboard .map-attribution{display:inline-flex!important;margin:0;font-size:8px;color:#7f8792}
+.revision-dashboard .map-selection{font-size:10px;border-bottom:1px solid var(--line)}
+.revision-dashboard .map-selection .selection-data{margin-left:auto}
+.revision-dashboard .map-selection .selection-tag{display:none}
+.revision-dashboard .muted-label{font-size:10px;font-weight:400}
+.field-meter{flex:0 0 auto;min-width:0}
+.field-numbers{display:flex;justify-content:space-between;align-items:flex-end;margin:26px 0 28px}
+.field-total{display:flex;align-items:baseline;gap:8px;padding:0;text-align:left}
+.field-total strong{font-size:72px;line-height:1;font-weight:500;letter-spacing:-3px;font-variant-numeric:tabular-nums}
+.field-total>span{font-size:12px;color:#7e8794}
+.online-number{font-size:10px;color:#838d9a;text-align:right;display:flex;flex-direction:column;gap:7px}
+.online-number strong{font-size:23px;line-height:1.2;color:#a9c7b8;font-weight:500;letter-spacing:-.4px;font-variant-numeric:tabular-nums}
+.online-number small{font-size:11px;margin-left:2px}
+.vehicle-field{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:12px;padding:8px 0 10px}
+.vehicle-dot{aspect-ratio:1;border:1px solid transparent;padding:3px;border-radius:6px;display:grid;place-items:center;min-width:0;transition:opacity .18s,border-color .18s,background .18s}
+.vehicle-dot>span{display:block;width:100%;height:100%;border-radius:4px;background:var(--vehicle-color);opacity:.9;transition:opacity .18s,transform .18s}
+.vehicle-dot:hover,.vehicle-dot:focus-visible{border-color:var(--vehicle-color);background:#ffffff05}
+.vehicle-dot:hover>span{transform:scale(.85)}
+.vehicle-dot.dim{opacity:.15}
+.field-context{height:38px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:10px;color:#7f8999;white-space:nowrap}
+.field-context [role=tooltip]{font-size:10px;color:#c8c4dd;overflow:hidden;text-overflow:ellipsis}
+.clear-filter{color:#a69bcd;display:flex;align-items:center;gap:4px;font-size:9px;flex-shrink:0;padding:4px 0}
+.field-categories{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;padding-top:8px;border-top:1px solid #252b32}
+.field-categories button{display:flex;align-items:center;gap:7px;padding:10px 8px;border:1px solid transparent;border-radius:5px;font-size:11px;color:#939eae;text-align:left}
+.field-categories button:hover{background:#20242a}
+.field-categories button.selected{background:#968bd511;border-color:#8072a455;color:#d0c8e5}
+.field-categories i,.capacity-legend i,.capacity-tooltip i{width:6px;height:6px;border-radius:2px;display:inline-block;flex-shrink:0}
+.field-categories strong{font-weight:500;color:#c9cdd5;margin-left:auto;font-size:13px;font-variant-numeric:tabular-nums}
+.today-summary{position:relative;flex:1;min-height:240px;padding-top:24px;border-top:1px solid var(--line);touch-action:none;user-select:none;border-radius:0;transition:border-color .2s,background .2s}
+.today-summary.refreshed{border-color:#9b91c6;background:#a39bd505}
+.summary-refresh{display:flex;align-items:center;gap:5px;color:#9195ad;font-size:10px;padding:5px 8px;border:1px solid #363944;border-radius:5px}
+.summary-refresh:hover{background:#292a35;color:#c6bee1}
+.summary-refresh.refreshing{opacity:.6}
+.today-metric{position:relative;padding:25px 0 21px;border-bottom:1px solid #262c34}
+.today-metric:last-of-type{border-bottom:0}
+.today-metric .metric-label{font-size:11px;color:#8994a5}
+.today-metric .metric-body{margin-top:10px;gap:8px}
+.today-metric .metric-body strong{font-size:35px;line-height:1.1;font-weight:500;font-variant-numeric:tabular-nums}
+.today-metric .metric-body strong small{font-size:11px;color:#798596;margin-left:7px}
+.today-metric .spark{width:85px;height:30px}
+.today-metric .delta{top:26px;font-size:10px}
+.summary-updated{display:flex;align-items:center;gap:6px;font-size:9px;color:#657485;margin-top:14px;min-height:18px}
+.pull-indicator{position:absolute;top:43px;left:48%;color:#a39bd5;pointer-events:none;transition:opacity .15s}
+.pull-ready{margin-left:auto;color:#a398c8;font-size:9px}
+.revision-dashboard .left-foot{margin-top:auto;padding:0;font-size:9px;gap:5px;color:#677484}
+.revision-dashboard .charging-section .charge-kpis{padding:24px 0 20px}
+.revision-dashboard .charging-section .station-list{padding:14px 0 0;gap:5px}
+.revision-dashboard .station-row{padding:9px 7px}
+.parking-section{display:grid;grid-template-rows:32px minmax(0,1fr) 30px 40px;gap:8px;min-height:0;padding-top:16px;border-top:1px solid var(--line)}
+.layout-mark{font-size:9px;color:#667282;font-weight:400;cursor:help}
+.parking-viewport{position:relative;overflow:hidden;isolation:isolate;min-height:0;border:1px solid #2b333a;border-radius:8px;background:#14181c;touch-action:none;user-select:none;cursor:grab}
+.parking-viewport.dragging{cursor:grabbing}
+.parking-svg{display:block;width:100%;height:100%;min-height:0}
+.parking-bay{cursor:pointer;outline:none;transition:opacity .18s}
+.parking-bay.dim{opacity:.2}
+.parking-bay .bay-shape{transition:stroke .18s,fill .18s,stroke-width .18s}
+.parking-bay:hover .bay-shape,.parking-bay:focus-visible .bay-shape{stroke:#c4b9ec;stroke-width:2.3}
+.parking-bay:focus-visible{outline:none}
+.parking-bay.selected .bay-shape{fill:#9d8bc51b}
+.parking-controls{position:absolute;right:10px;top:10px;background:#1a1e24ed;border:1px solid #3c414c;border-radius:6px;display:flex;align-items:center;padding:3px;gap:1px;z-index:2;cursor:default}
+.parking-controls button{width:27px;height:27px;color:#a6aebd;display:grid;place-items:center;border-radius:4px}
+.parking-controls button:hover{background:#32313e;color:#dfd8f4}
+.parking-controls>span{font-size:9px;color:#878f9f;font-variant-numeric:tabular-nums;min-width:33px;text-align:center}
+.parking-controls button:last-child{border-left:1px solid #343a46;margin-left:3px;border-radius:0 4px 4px 0}
+.parking-tooltip{position:absolute;z-index:4;pointer-events:none;display:flex;flex-direction:column;gap:7px;width:208px;background:#23262df5;border:1px solid #565062;border-radius:7px;box-shadow:0 6px 22px #0004;padding:12px;color:#c6bfdc}
+.parking-tooltip strong{font-size:12px;font-weight:550}
+.parking-tooltip span{font-size:11px;color:#c2c9d4;font-variant-numeric:tabular-nums}
+.parking-tooltip small{font-size:10px;color:#8f9aad}
+.parking-legend{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.parking-legend button{font-size:9px;display:flex;align-items:center;gap:5px;color:#8691a2;padding:4px 2px;border-bottom:1px solid transparent}
+.parking-legend button.active{color:#cabde5;border-color:#a092ca}
+.parking-legend i{width:7px;height:7px;border-radius:1px;display:inline-block}
+.parking-selection{display:flex;align-items:center;gap:9px;font-size:10px;color:#808d9f;min-width:0;border-top:1px solid #292f38;padding-top:8px}
+.parking-selection strong{font-size:12px;font-weight:550;color:#c0b5dc;white-space:nowrap}
+.parking-selection>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.parking-selection>span:nth-child(2){margin-left:auto}
+.parking-selection button{color:#9091a8;width:23px;height:23px;display:grid;place-items:center;flex-shrink:0}
+.chart-mode-tabs{display:flex;gap:16px;align-items:center;min-width:0}
+.chart-mode-tabs button{position:relative;padding:8px 0;font-size:14px;font-weight:500;color:#6f7a8d;white-space:nowrap}
+.chart-mode-tabs button.active{color:#e2e1ea}
+.chart-mode-tabs button.active:after{content:'';position:absolute;bottom:0;left:0;width:20px;height:2px;background:#aaa0db;border-radius:2px}
+.capacity-legend{display:flex;align-items:center;gap:14px;font-size:10px;color:#8b97a9;margin-top:12px;flex-shrink:0}
+.capacity-legend>span{display:flex;gap:5px;align-items:center}
+.capacity-chart{position:relative;flex:1;min-height:0;margin-top:10px;isolation:isolate}
+.capacity-chart>svg{width:100%;height:100%;overflow:visible}
+.capacity-column{outline:none;cursor:crosshair}
+.capacity-column rect{transition:opacity .18s,fill .18s,stroke .18s}
+.capacity-tooltip{position:absolute;z-index:3;bottom:18px;display:flex;flex-direction:column;gap:6px;min-width:180px;padding:12px;background:#22262df5;border:1px solid #4f4c5d;border-radius:7px;box-shadow:0 6px 20px #0004;pointer-events:none}
+.capacity-tooltip>strong{font-size:12px;font-weight:550;margin-bottom:3px}
+.capacity-tooltip small{font-size:10px;color:#7e899d;font-weight:400}
+.capacity-tooltip>span{display:flex;align-items:center;gap:6px;font-size:10px;color:#9eabbd}
+.capacity-tooltip b{margin-left:auto;color:#d8dbe5;font-size:11px;font-weight:500}
+.revision-dashboard .footer{font-size:9px}
+@media(max-height:900px){
+ .revision-dashboard .left-column{gap:16px}.revision-dashboard .right-column{gap:14px}
+ .revision-dashboard .center-column{grid-template-rows:minmax(0,1fr) minmax(195px,29%);gap:14px}
+ .field-numbers{margin:18px 0}.field-total strong{font-size:56px}.online-number strong{font-size:21px}
+ .vehicle-field{gap:8px;padding:4px 0}.vehicle-dot{padding:2px;border-radius:4px}.vehicle-dot>span{border-radius:3px}
+ .field-context{height:30px;font-size:9px}.field-categories{gap:3px 8px;padding-top:5px}.field-categories button{padding:7px 5px;font-size:10px}.field-categories strong{font-size:12px}
+ .today-summary{padding-top:16px;min-height:215px}.today-metric{padding:16px 0 12px}.today-metric .metric-body{margin-top:6px}.today-metric .metric-body strong{font-size:28px}.today-metric .delta{top:17px;font-size:9px}.today-metric .spark{width:65px;height:25px}.summary-updated{margin-top:10px}
+ .revision-dashboard .charging-section .charge-kpis{padding:16px 0 14px}.revision-dashboard .charging-section .station-list{padding-top:9px;gap:3px}.revision-dashboard .station-row{padding:6px 5px}
+ .parking-section{grid-template-rows:26px minmax(0,1fr) 26px 32px;gap:6px;padding-top:12px}.parking-selection{font-size:9px;gap:6px}.parking-controls{top:8px;right:8px}.parking-controls button{width:24px;height:24px}
+ .chart-mode-tabs{gap:12px}.chart-mode-tabs button{font-size:12px}.capacity-legend{gap:10px;font-size:9px;margin-top:9px}.capacity-chart{margin-top:6px}
+}
+@media(max-height:800px){
+ .revision-dashboard .left-column{gap:12px}.field-numbers{margin:14px 0}.field-total strong{font-size:48px}.online-number{font-size:9px}.online-number strong{font-size:19px}
+ .vehicle-field{gap:6px}.field-categories button{padding:5px 4px}.field-context{height:26px}.field-categories{gap:2px 6px}.field-categories strong{font-size:11px}
+ .today-summary{padding-top:12px;min-height:190px}.today-metric{padding:12px 0 10px}.today-metric .metric-body strong{font-size:25px}.today-metric .metric-label{font-size:10px}.today-metric .delta{top:13px}.summary-updated{margin-top:6px}.today-metric .spark{height:22px;width:60px}
+ .revision-dashboard .right-column{gap:10px}.revision-dashboard .charging-section .charge-kpis{padding:13px 0 11px}.revision-dashboard .station-row{padding:4px 4px}.revision-dashboard .station-row>span{font-size:10px}
+ .parking-selection>span{font-size:8px}.parking-selection strong{font-size:10px}.parking-controls>span{min-width:28px}.parking-legend button{font-size:8px}
+}
+@media(min-width:2200px) and (min-height:1100px){
+ .field-total strong{font-size:92px}.field-numbers{margin:36px 0}.vehicle-field{gap:16px}.field-categories button{padding:14px 10px;font-size:13px}.field-categories strong{font-size:16px}.online-number strong{font-size:28px}
+ .today-summary{padding-top:32px}.today-metric{padding:32px 0}.today-metric .metric-body strong{font-size:44px}.today-metric .spark{width:120px;height:40px}.today-metric .metric-label{font-size:13px}.today-metric .delta{top:32px;font-size:12px}
+ .parking-selection{font-size:12px}.parking-legend button{font-size:11px}.chart-mode-tabs button{font-size:17px}.capacity-legend{font-size:12px}.revision-dashboard .map-module{grid-template-rows:44px minmax(0,1fr) 60px}
+}
+.field-numbers{margin:20px 0}.field-total strong{font-size:64px}
+.vehicle-field{grid-template-rows:repeat(5,22px);gap:10px 12px;padding:8px 0}
+.vehicle-dot{aspect-ratio:auto;height:22px;padding:0;justify-self:center;width:22px;border-radius:4px}
+.vehicle-dot>span{width:18px;height:18px;border-radius:3px}
+.field-context{height:30px}.field-categories button{padding:8px 6px}.field-categories{gap:4px 12px}
+.today-summary{padding-top:20px}.today-metric{padding:19px 0 17px}.today-metric .metric-body{margin-top:8px}.today-metric .metric-body strong{font-size:33px}.today-metric .delta{top:20px}
+@media(max-height:900px){.field-numbers{margin:15px 0}.field-total strong{font-size:52px}.vehicle-field{grid-template-rows:repeat(5,17px);gap:8px 8px;padding:5px 0}.vehicle-dot{height:17px;width:17px}.vehicle-dot>span{width:14px;height:14px;border-radius:2px}.field-context{height:27px}.field-categories button{padding:6px 4px}.today-summary{padding-top:14px}.today-metric{padding:14px 0 12px}.today-metric .metric-body strong{font-size:27px}.today-metric .delta{top:15px}}
+@media(max-height:800px){.field-numbers{margin:12px 0}.field-total strong{font-size:44px}.vehicle-field{grid-template-rows:repeat(5,14px);gap:6px 8px;padding:4px 0}.vehicle-dot{height:14px;width:14px}.vehicle-dot>span{width:12px;height:12px}.field-context{height:25px}.field-categories button{padding:5px 4px}.today-summary{padding-top:12px}.today-metric{padding:11px 0 9px}.today-metric .metric-body strong{font-size:24px}.today-metric .delta{top:12px}}
+@media(min-width:2200px) and (min-height:1100px){.field-numbers{margin:28px 0}.field-total strong{font-size:84px}.vehicle-field{grid-template-rows:repeat(5,30px);gap:16px;padding:12px 0}.vehicle-dot{height:30px;width:30px}.vehicle-dot>span{width:25px;height:25px;border-radius:4px}.field-categories button{padding:12px 8px}.today-metric{padding:28px 0}.today-metric .metric-body strong{font-size:42px}.today-metric .delta{top:29px}}
+@media(prefers-reduced-motion:reduce){.vehicle-dot,.vehicle-dot>span,.parking-bay,.parking-bay .bay-shape,.capacity-column rect,.today-summary{transition:none!important}}

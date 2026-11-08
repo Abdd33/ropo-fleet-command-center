@@ -1,0 +1,35 @@
+{
+  "checks": [
+    {
+      "name": "all classic inline scripts parse",
+      "pass": true
+    },
+    {
+      "name": "standalone entry embeds source and has no local imports or local fetch",
+      "pass": true
+    },
+    {
+      "name": "50 dots partition every vehicle exactly once by status and SOC",
+      "pass": true
+    },
+    {
+      "name": "all historical capacity stacks sum to fleet size and latest snapshot matches",
+      "pass": true
+    },
+    {
+      "name": "all station layouts cover actual 12 bays without duplicate ids",
+      "pass": true
+    },
+    {
+      "name": "local summary refresh leaves vehicles/bays unchanged and increments summary",
+      "pass": true
+    },
+    {
+      "name": "event UI, decorative headings, service bar and old SOC lists removed",
+      "pass": true
+    }
+  ],
+  "nodeRequiredByDeliveredPage": false,
+  "renderer": "CDN React / SVG / MapLibre / ECharts",
+  "testedAt": "2026-11-08T10:41:52.141Z"
+}

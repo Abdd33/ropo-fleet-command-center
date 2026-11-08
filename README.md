@@ -1,45 +1,37 @@
-# ROPO Fleet 运营指挥中心 · CDN 双击版
+# ROPO Fleet · 运营指挥中心
 
-**此版本需要联网加载 CDN。解压后直接双击根目录 `index.html`，使用 Chrome 或 Edge 打开。无需安装环境、无需构建、无需本地服务器。**
+[打开在线大屏](https://abdd33.github.io/ropo-fleet-command-center/)
 
-请先将压缩包完整解压，再打开 HTML；不要在压缩软件的预览窗口内运行。
+**需要联网加载CDN。** 下载并完整解压后，入口为根目录 `index.html`；页面没有安装、构建或本地服务器依赖。所有业务JavaScript、样式、车辆/站点/车位数据和矢量底图均已内嵌，无本地ES Module或本地JSON请求。
 
-## 保留的界面与功能
+## 本轮改动
 
-沿用上一版页面结构、配色、CSS、模拟数据与 React 组件；本次仅改变依赖和文件加载方式。
+- 移除异常事件列表、筛选、计数及装饰性英文标题；离线车辆与故障车位仍通过颜色和图标表达。
+- 左侧Field点阵一格一辆车，状态/电量切换；类别Hover/键盘聚焦高亮并显示数量，点击类别筛选地图，再次点击或清除恢复。点击单车点阵定位车辆。
+- 保留简洁在线率，统计口径移至原生Tooltip。
+- 底部“运力构成/运营趋势”切换，同一时刻只展示一种图形。Stacked Bars支持今日按小时、近7天及近30天按天；每根柱总量50辆，包含离线小分段。最后一柱与实时车辆状态一致。
+- 右侧为连续斜向车位SVG画布，包含分区、通道、出入口、五种状态与选中详情；Hover/键盘聚焦显示车位编号、车辆、SOC、功率及预计剩余分钟。
+- 停车场按住拖动，5px阈值区分点击与拖动；设置位移边界与85–170%缩放范围；切站后复位，点击空白取消选择。
+- 左侧今日运营支持明确刷新按钮，以及下拉64px松手刷新。局部刷新不移动车辆、不刷新页面、不改变停车场视野；无音效。
 
-- 三栏运营概况、MapLibre 地图、ECharts 趋势、充电站与车位矩阵、异常事件。
-- 车辆筛选、图层开关、缩放与复位、车辆提示和选择、站点/车位/异常定位。
-- 今日/近7天/近30天趋势切换及最多两项指标切换。
-- 车位 Hover 与键盘聚焦提示、车位状态筛选。
-- 暂停/恢复模拟更新、实时日期时钟、全屏/退出全屏。
-- 原有1920×1080、1366×768、2560×1440响应式样式。
+## 站点布局边界
 
-全屏需要由用户点击按钮触发。如果浏览器策略拒绝请求，页面会给出F11提示。
+没有提供站点真实平面图或车位坐标。本版本的50辆车、3站、36车位及车辆/车位关联沿用既有数据，**停车场平面为示意**：张江/科学城站各两排六位，金科路站三排四位。分区、斜向角度、通道和出入口不代表真实测绘。可在 `source/revision.js` 的 `parkingLayouts` / `parkingGeometry` 中按真实资料替换布局，保持车位ID与业务数据关联。
 
-## 文件和加载方式
+每站12位；总计6充电、3占用、3故障、2离线、22空闲。桩利用率=充电车位/全部车位；车辆在线率包含充电及维护车辆。模型中的事件数据保留兼容性，页面没有独立事件入口。
 
-`index.html` 已内嵌全部业务 JavaScript、模拟数据、示意地图数据与页面CSS；它本身即可运行，不会读取本地JSON、图片、字体或JavaScript模块。`source/` 仅是便于查看的普通JavaScript和CSS副本，不是入口的运行依赖；实际入口代码位于HTML内。
+所有历史数据与场景仍为模拟。截至场景10:20，顶部显示当前设备日期与时间。运力历史为确定性演示快照，不声称真实历史采样。
 
-依赖使用固定版本的普通CDN脚本：
+## CDN与源码
 
-| 依赖 | 版本 |
-|---|---|
-| React / ReactDOM | 18.3.1 UMD |
-| MapLibre GL JS / CSS | 5.14.0 浏览器分发版 |
-| ECharts | 6.0.0 |
-| Lucide React | 0.468.0 UMD |
+固定版本：React/ReactDOM 18.3.1、MapLibre GL JS 5.14.0、ECharts 6.0.0、Lucide React 0.468.0。jsDelivr为主，UNPKG备用。MapLibre使用浏览器发行版Blob Worker与内嵌GeoJSON；无WebGL时可降级SVG示意图。
 
-主CDN为jsDelivr，失败时尝试UNPKG。为支持普通script和file协议，React与MapLibre采用提供完整浏览器分发文件的版本；业务组件与视觉保持不变。TS/TSX已预先转为普通JavaScript，没有浏览器运行时TS编译器，也没有任何编译命令需要执行。
+`index.html` 为实际入口；`source/app.js` 与 `source/style.css` 为入口中的完整普通JavaScript/CSS副本；`source/revision.js` 与 `source/revision.css` 单独保存本轮组件及样式，便于审阅。修改源码副本时需同步入口内嵌内容；浏览器不请求这些本地文件。
 
-MapLibre使用浏览器分发版内部的Blob Worker，不加载本地 `.mjs` Worker。底图仍是内嵌GeoJSON矢量示意图，不依赖地图Key，不声称真实在线地图或导航精度。若地图引擎或WebGL不可用，显示已有SVG示意图降级。
+交互参考为 [Context Meter](https://bencho.dev/blocks/context-meter)、[Stacked Bars](https://bencho.dev/blocks/stacked-bars) 与 [Pull](https://bencho.dev/blocks/pull) 的表现及交互方式，本轮组件独立实现，未引入声音或浅色主题。
 
-首次打开请等待CDN加载完成。若网络无法连接两个CDN，页面会显示加载失败与“重新加载”按钮；保持联网后重试即可。
+## 验证
 
-## 验证范围
+本轮已在Chrome通过HTTP预览检查1920×1080、1366×768、2560×1440；DOM记录与人工操作结果见 `verification/`。检查点包括点阵状态/SOC筛选、图表形态/日期切换、柱Tooltip、车位选择、提示、空白取消、拖动不误选、位移边界、缩放、切站复位及Pull/按钮局部刷新。
 
-已检查所有内嵌脚本能按普通JavaScript解析，确认无本地ES Module import、require、本地Worker路径和本地fetch。已实际下载固定CDN文件，验证React、ReactDOM、Lucide、ECharts、MapLibre均暴露所需浏览器全局API。页面CSS与上一版逐字一致。
-
-**直接双击运行的浏览器实测尚未完成：自动化浏览器的URL安全策略只允许http/https，拒绝file协议，并禁止绕过。这里没有把服务器验证冒充本地文件验证。请在本机直接双击 `index.html` 确认运行结果。**
-
-检查记录见 `verification/static-checks.json`。上一版浏览器交互验收不能替代此版本的file协议实测。
+自动化工具的URL策略禁止file协议，本轮未绕过该限制，也未将HTTP验收宣称为file协议实测。页面仍保留CDN单文件运行结构。全屏需由用户点击；浏览器拒绝时给出F11提示。

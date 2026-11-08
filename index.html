@@ -15,6 +15,154 @@
 @media(max-height:800px){.fleet-total strong{font-size:38px}.fleet-total{padding:7px 0}.fleet-status-grid{padding:5px 0;gap:2px 8px}.stat-cell{padding:4px 4px}.stat-cell>strong{font-size:21px;line-height:1.1;margin:3px 0}.stat-cell>span{font-size:10px}.service-state{padding:2px 4px 8px}.stacked-bar{margin:8px 0}.status-legend{gap:4px 8px}.online-section{padding:8px 4px}.online-ring{width:64px;height:64px}.online-ring strong{font-size:21px}.online-info>span{margin:6px 0}.online-info>small{margin-top:6px}.efficiency{min-height:190px;padding-top:10px}.efficiency-row{padding:6px 0}.metric-body strong{font-size:22px}.metric-body .spark{height:20px}.right-column>.charging-section>.section-heading .section-kicker{display:none}.charge-kpis{padding:12px 0 10px}.charge-kpis>div{gap:6px}.charge-kpis strong{font-size:25px}.power-line{padding:7px 0}.station-list{padding:5px 0 7px;gap:2px}.station-row{padding:4px 4px;min-height:23px}.station-row>span{font-size:9px}.bays-section{padding-top:9px}.bay-matrix{margin-top:8px;gap:5px}.bay{min-height:49px;padding:5px 1px 6px;gap:3px}.bay-number{font-size:7px}.bay svg{height:11px;width:11px}.empty-bay-mark{height:11px}.bay-value{font-size:8px}.bay-legend{margin-top:5px}.bay-detail{height:23px;margin-top:1px}.events-section{padding-top:8px}.events-section>.section-heading{min-height:24px;margin-bottom:4px}.events-section .event-row{min-height:37px!important;padding:5px 0;gap:6px}.event-content{gap:3px}.event-content strong{font-size:10px}.event-content small{font-size:8px}.event-icon{height:23px;width:23px}.events-foot{padding-top:6px;font-size:8px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 
+
+
+
+
+
+
+
+
+
+/* revision-v2 */
+/* 2026-11-08: information hierarchy, Field meter and parking canvas. */
+.revision-dashboard .main-grid{grid-template-columns:minmax(0,22fr) minmax(0,50fr) minmax(0,28fr)}
+.revision-dashboard .left-column{display:flex;flex-direction:column;gap:24px;padding-right:20px}
+.revision-dashboard .right-column{display:grid;grid-template-rows:auto minmax(0,1fr);gap:20px;padding-left:20px}
+.revision-dashboard .center-column{grid-template-rows:minmax(0,1fr) minmax(230px,29%);gap:20px}
+.revision-dashboard .map-module{grid-template-rows:36px minmax(0,1fr) 50px}
+.revision-dashboard .map-module>.section-heading{padding-bottom:12px}
+.revision-dashboard .map-stage>.map-canvas{position:absolute;inset:0;width:100%;height:100%}
+.revision-dashboard .section-heading h2{font-size:15px;font-weight:550}
+.revision-dashboard .map-source{font-size:9px;opacity:.65;letter-spacing:.3px}
+.revision-dashboard .map-legend{justify-content:flex-end;padding:8px 12px;gap:0;background:transparent;border:0;bottom:0;pointer-events:none}
+.revision-dashboard .map-attribution{display:inline-flex!important;margin:0;font-size:8px;color:#7f8792}
+.revision-dashboard .map-selection{font-size:10px;border-bottom:1px solid var(--line)}
+.revision-dashboard .map-selection .selection-data{margin-left:auto}
+.revision-dashboard .map-selection .selection-tag{display:none}
+.revision-dashboard .muted-label{font-size:10px;font-weight:400}
+.field-meter{flex:0 0 auto;min-width:0}
+.field-numbers{display:flex;justify-content:space-between;align-items:flex-end;margin:26px 0 28px}
+.field-total{display:flex;align-items:baseline;gap:8px;padding:0;text-align:left}
+.field-total strong{font-size:72px;line-height:1;font-weight:500;letter-spacing:-3px;font-variant-numeric:tabular-nums}
+.field-total>span{font-size:12px;color:#7e8794}
+.online-number{font-size:10px;color:#838d9a;text-align:right;display:flex;flex-direction:column;gap:7px}
+.online-number strong{font-size:23px;line-height:1.2;color:#a9c7b8;font-weight:500;letter-spacing:-.4px;font-variant-numeric:tabular-nums}
+.online-number small{font-size:11px;margin-left:2px}
+.vehicle-field{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:12px;padding:8px 0 10px}
+.vehicle-dot{aspect-ratio:1;border:1px solid transparent;padding:3px;border-radius:6px;display:grid;place-items:center;min-width:0;transition:opacity .18s,border-color .18s,background .18s}
+.vehicle-dot>span{display:block;width:100%;height:100%;border-radius:4px;background:var(--vehicle-color);opacity:.9;transition:opacity .18s,transform .18s}
+.vehicle-dot:hover,.vehicle-dot:focus-visible{border-color:var(--vehicle-color);background:#ffffff05}
+.vehicle-dot:hover>span{transform:scale(.85)}
+.vehicle-dot.dim{opacity:.15}
+.field-context{height:38px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:10px;color:#7f8999;white-space:nowrap}
+.field-context [role=tooltip]{font-size:10px;color:#c8c4dd;overflow:hidden;text-overflow:ellipsis}
+.clear-filter{color:#a69bcd;display:flex;align-items:center;gap:4px;font-size:9px;flex-shrink:0;padding:4px 0}
+.field-categories{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;padding-top:8px;border-top:1px solid #252b32}
+.field-categories button{display:flex;align-items:center;gap:7px;padding:10px 8px;border:1px solid transparent;border-radius:5px;font-size:11px;color:#939eae;text-align:left}
+.field-categories button:hover{background:#20242a}
+.field-categories button.selected{background:#968bd511;border-color:#8072a455;color:#d0c8e5}
+.field-categories i,.capacity-legend i,.capacity-tooltip i{width:6px;height:6px;border-radius:2px;display:inline-block;flex-shrink:0}
+.field-categories strong{font-weight:500;color:#c9cdd5;margin-left:auto;font-size:13px;font-variant-numeric:tabular-nums}
+.today-summary{position:relative;flex:1;min-height:240px;padding-top:24px;border-top:1px solid var(--line);touch-action:none;user-select:none;border-radius:0;transition:border-color .2s,background .2s}
+.today-summary.refreshed{border-color:#9b91c6;background:#a39bd505}
+.summary-refresh{display:flex;align-items:center;gap:5px;color:#9195ad;font-size:10px;padding:5px 8px;border:1px solid #363944;border-radius:5px}
+.summary-refresh:hover{background:#292a35;color:#c6bee1}
+.summary-refresh.refreshing{opacity:.6}
+.today-metric{position:relative;padding:25px 0 21px;border-bottom:1px solid #262c34}
+.today-metric:last-of-type{border-bottom:0}
+.today-metric .metric-label{font-size:11px;color:#8994a5}
+.today-metric .metric-body{margin-top:10px;gap:8px}
+.today-metric .metric-body strong{font-size:35px;line-height:1.1;font-weight:500;font-variant-numeric:tabular-nums}
+.today-metric .metric-body strong small{font-size:11px;color:#798596;margin-left:7px}
+.today-metric .spark{width:85px;height:30px}
+.today-metric .delta{top:26px;font-size:10px}
+.summary-updated{display:flex;align-items:center;gap:6px;font-size:9px;color:#657485;margin-top:14px;min-height:18px}
+.pull-indicator{position:absolute;top:43px;left:48%;color:#a39bd5;pointer-events:none;transition:opacity .15s}
+.pull-ready{margin-left:auto;color:#a398c8;font-size:9px}
+.revision-dashboard .left-foot{margin-top:auto;padding:0;font-size:9px;gap:5px;color:#677484}
+.revision-dashboard .charging-section .charge-kpis{padding:24px 0 20px}
+.revision-dashboard .charging-section .station-list{padding:14px 0 0;gap:5px}
+.revision-dashboard .station-row{padding:9px 7px}
+.parking-section{display:grid;grid-template-rows:32px minmax(0,1fr) 30px 40px;gap:8px;min-height:0;padding-top:16px;border-top:1px solid var(--line)}
+.layout-mark{font-size:9px;color:#667282;font-weight:400;cursor:help}
+.parking-viewport{position:relative;overflow:hidden;isolation:isolate;min-height:0;border:1px solid #2b333a;border-radius:8px;background:#14181c;touch-action:none;user-select:none;cursor:grab}
+.parking-viewport.dragging{cursor:grabbing}
+.parking-svg{display:block;width:100%;height:100%;min-height:0}
+.parking-bay{cursor:pointer;outline:none;transition:opacity .18s}
+.parking-bay.dim{opacity:.2}
+.parking-bay .bay-shape{transition:stroke .18s,fill .18s,stroke-width .18s}
+.parking-bay:hover .bay-shape,.parking-bay:focus-visible .bay-shape{stroke:#c4b9ec;stroke-width:2.3}
+.parking-bay:focus-visible{outline:none}
+.parking-bay.selected .bay-shape{fill:#9d8bc51b}
+.parking-controls{position:absolute;right:10px;top:10px;background:#1a1e24ed;border:1px solid #3c414c;border-radius:6px;display:flex;align-items:center;padding:3px;gap:1px;z-index:2;cursor:default}
+.parking-controls button{width:27px;height:27px;color:#a6aebd;display:grid;place-items:center;border-radius:4px}
+.parking-controls button:hover{background:#32313e;color:#dfd8f4}
+.parking-controls>span{font-size:9px;color:#878f9f;font-variant-numeric:tabular-nums;min-width:33px;text-align:center}
+.parking-controls button:last-child{border-left:1px solid #343a46;margin-left:3px;border-radius:0 4px 4px 0}
+.parking-tooltip{position:absolute;z-index:4;pointer-events:none;display:flex;flex-direction:column;gap:7px;width:208px;background:#23262df5;border:1px solid #565062;border-radius:7px;box-shadow:0 6px 22px #0004;padding:12px;color:#c6bfdc}
+.parking-tooltip strong{font-size:12px;font-weight:550}
+.parking-tooltip span{font-size:11px;color:#c2c9d4;font-variant-numeric:tabular-nums}
+.parking-tooltip small{font-size:10px;color:#8f9aad}
+.parking-legend{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.parking-legend button{font-size:9px;display:flex;align-items:center;gap:5px;color:#8691a2;padding:4px 2px;border-bottom:1px solid transparent}
+.parking-legend button.active{color:#cabde5;border-color:#a092ca}
+.parking-legend i{width:7px;height:7px;border-radius:1px;display:inline-block}
+.parking-selection{display:flex;align-items:center;gap:9px;font-size:10px;color:#808d9f;min-width:0;border-top:1px solid #292f38;padding-top:8px}
+.parking-selection strong{font-size:12px;font-weight:550;color:#c0b5dc;white-space:nowrap}
+.parking-selection>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.parking-selection>span:nth-child(2){margin-left:auto}
+.parking-selection button{color:#9091a8;width:23px;height:23px;display:grid;place-items:center;flex-shrink:0}
+.chart-mode-tabs{display:flex;gap:16px;align-items:center;min-width:0}
+.chart-mode-tabs button{position:relative;padding:8px 0;font-size:14px;font-weight:500;color:#6f7a8d;white-space:nowrap}
+.chart-mode-tabs button.active{color:#e2e1ea}
+.chart-mode-tabs button.active:after{content:'';position:absolute;bottom:0;left:0;width:20px;height:2px;background:#aaa0db;border-radius:2px}
+.capacity-legend{display:flex;align-items:center;gap:14px;font-size:10px;color:#8b97a9;margin-top:12px;flex-shrink:0}
+.capacity-legend>span{display:flex;gap:5px;align-items:center}
+.capacity-chart{position:relative;flex:1;min-height:0;margin-top:10px;isolation:isolate}
+.capacity-chart>svg{width:100%;height:100%;overflow:visible}
+.capacity-column{outline:none;cursor:crosshair}
+.capacity-column rect{transition:opacity .18s,fill .18s,stroke .18s}
+.capacity-tooltip{position:absolute;z-index:3;bottom:18px;display:flex;flex-direction:column;gap:6px;min-width:180px;padding:12px;background:#22262df5;border:1px solid #4f4c5d;border-radius:7px;box-shadow:0 6px 20px #0004;pointer-events:none}
+.capacity-tooltip>strong{font-size:12px;font-weight:550;margin-bottom:3px}
+.capacity-tooltip small{font-size:10px;color:#7e899d;font-weight:400}
+.capacity-tooltip>span{display:flex;align-items:center;gap:6px;font-size:10px;color:#9eabbd}
+.capacity-tooltip b{margin-left:auto;color:#d8dbe5;font-size:11px;font-weight:500}
+.revision-dashboard .footer{font-size:9px}
+@media(max-height:900px){
+ .revision-dashboard .left-column{gap:16px}.revision-dashboard .right-column{gap:14px}
+ .revision-dashboard .center-column{grid-template-rows:minmax(0,1fr) minmax(195px,29%);gap:14px}
+ .field-numbers{margin:18px 0}.field-total strong{font-size:56px}.online-number strong{font-size:21px}
+ .vehicle-field{gap:8px;padding:4px 0}.vehicle-dot{padding:2px;border-radius:4px}.vehicle-dot>span{border-radius:3px}
+ .field-context{height:30px;font-size:9px}.field-categories{gap:3px 8px;padding-top:5px}.field-categories button{padding:7px 5px;font-size:10px}.field-categories strong{font-size:12px}
+ .today-summary{padding-top:16px;min-height:215px}.today-metric{padding:16px 0 12px}.today-metric .metric-body{margin-top:6px}.today-metric .metric-body strong{font-size:28px}.today-metric .delta{top:17px;font-size:9px}.today-metric .spark{width:65px;height:25px}.summary-updated{margin-top:10px}
+ .revision-dashboard .charging-section .charge-kpis{padding:16px 0 14px}.revision-dashboard .charging-section .station-list{padding-top:9px;gap:3px}.revision-dashboard .station-row{padding:6px 5px}
+ .parking-section{grid-template-rows:26px minmax(0,1fr) 26px 32px;gap:6px;padding-top:12px}.parking-selection{font-size:9px;gap:6px}.parking-controls{top:8px;right:8px}.parking-controls button{width:24px;height:24px}
+ .chart-mode-tabs{gap:12px}.chart-mode-tabs button{font-size:12px}.capacity-legend{gap:10px;font-size:9px;margin-top:9px}.capacity-chart{margin-top:6px}
+}
+@media(max-height:800px){
+ .revision-dashboard .left-column{gap:12px}.field-numbers{margin:14px 0}.field-total strong{font-size:48px}.online-number{font-size:9px}.online-number strong{font-size:19px}
+ .vehicle-field{gap:6px}.field-categories button{padding:5px 4px}.field-context{height:26px}.field-categories{gap:2px 6px}.field-categories strong{font-size:11px}
+ .today-summary{padding-top:12px;min-height:190px}.today-metric{padding:12px 0 10px}.today-metric .metric-body strong{font-size:25px}.today-metric .metric-label{font-size:10px}.today-metric .delta{top:13px}.summary-updated{margin-top:6px}.today-metric .spark{height:22px;width:60px}
+ .revision-dashboard .right-column{gap:10px}.revision-dashboard .charging-section .charge-kpis{padding:13px 0 11px}.revision-dashboard .station-row{padding:4px 4px}.revision-dashboard .station-row>span{font-size:10px}
+ .parking-selection>span{font-size:8px}.parking-selection strong{font-size:10px}.parking-controls>span{min-width:28px}.parking-legend button{font-size:8px}
+}
+@media(min-width:2200px) and (min-height:1100px){
+ .field-total strong{font-size:92px}.field-numbers{margin:36px 0}.vehicle-field{gap:16px}.field-categories button{padding:14px 10px;font-size:13px}.field-categories strong{font-size:16px}.online-number strong{font-size:28px}
+ .today-summary{padding-top:32px}.today-metric{padding:32px 0}.today-metric .metric-body strong{font-size:44px}.today-metric .spark{width:120px;height:40px}.today-metric .metric-label{font-size:13px}.today-metric .delta{top:32px;font-size:12px}
+ .parking-selection{font-size:12px}.parking-legend button{font-size:11px}.chart-mode-tabs button{font-size:17px}.capacity-legend{font-size:12px}.revision-dashboard .map-module{grid-template-rows:44px minmax(0,1fr) 60px}
+}
+.field-numbers{margin:20px 0}.field-total strong{font-size:64px}
+.vehicle-field{grid-template-rows:repeat(5,22px);gap:10px 12px;padding:8px 0}
+.vehicle-dot{aspect-ratio:auto;height:22px;padding:0;justify-self:center;width:22px;border-radius:4px}
+.vehicle-dot>span{width:18px;height:18px;border-radius:3px}
+.field-context{height:30px}.field-categories button{padding:8px 6px}.field-categories{gap:4px 12px}
+.today-summary{padding-top:20px}.today-metric{padding:19px 0 17px}.today-metric .metric-body{margin-top:8px}.today-metric .metric-body strong{font-size:33px}.today-metric .delta{top:20px}
+@media(max-height:900px){.field-numbers{margin:15px 0}.field-total strong{font-size:52px}.vehicle-field{grid-template-rows:repeat(5,17px);gap:8px 8px;padding:5px 0}.vehicle-dot{height:17px;width:17px}.vehicle-dot>span{width:14px;height:14px;border-radius:2px}.field-context{height:27px}.field-categories button{padding:6px 4px}.today-summary{padding-top:14px}.today-metric{padding:14px 0 12px}.today-metric .metric-body strong{font-size:27px}.today-metric .delta{top:15px}}
+@media(max-height:800px){.field-numbers{margin:12px 0}.field-total strong{font-size:44px}.vehicle-field{grid-template-rows:repeat(5,14px);gap:6px 8px;padding:4px 0}.vehicle-dot{height:14px;width:14px}.vehicle-dot>span{width:12px;height:12px}.field-context{height:25px}.field-categories button{padding:5px 4px}.today-summary{padding-top:12px}.today-metric{padding:11px 0 9px}.today-metric .metric-body strong{font-size:24px}.today-metric .delta{top:12px}}
+@media(min-width:2200px) and (min-height:1100px){.field-numbers{margin:28px 0}.field-total strong{font-size:84px}.vehicle-field{grid-template-rows:repeat(5,30px);gap:16px;padding:12px 0}.vehicle-dot{height:30px;width:30px}.vehicle-dot>span{width:25px;height:25px;border-radius:4px}.field-categories button{padding:12px 8px}.today-metric{padding:28px 0}.today-metric .metric-body strong{font-size:42px}.today-metric .delta{top:29px}}
+@media(prefers-reduced-motion:reduce){.vehicle-dot,.vehicle-dot>span,.parking-bay,.parking-bay .bay-shape,.capacity-column rect,.today-summary{transition:none!important}}
+
 .boot{position:fixed;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;background:#111214;color:#d0d2da}.boot-logo{background:#6865b6;border-radius:10px;padding:0 12px;font-size:36px;color:white}.boot-title{font-size:18px;font-weight:500}.boot p{font-size:12px;color:#8c909a}.boot button{border:1px solid #55516b;padding:8px 20px;border-radius:6px;background:#27232e}</style></head>
 <body><div id="root"><div class="boot"><div class="boot-logo">Λ</div><h1 class="boot-title">ROPO Fleet 运营指挥中心</h1><p id="load-status">需要联网加载 CDN 资源…</p><button id="retry" hidden onclick="location.reload()">重新加载</button></div></div>
 <script>window.ROPO_CONFIG={mapStyleUrl:'',platformUrl:'https://abdd33.github.io/ropo-fleet-linear/#overview',refreshMs:5000};</script>
@@ -96,12 +244,12 @@ function TrendChart({ period, selected, tick, utilization }) {
 
 /* Map.js — plain browser JavaScript */
 const collection = (features) => ({ type: 'FeatureCollection', features });
-function vehiclesGeo(data, filter) { return collection(data.vehicles.filter(v => filter === 'all' || (filter === 'abnormal' ? ['offline', 'maintenance'].includes(v.status) : v.status === filter)).map(v => ({ type: 'Feature', properties: { id: v.id, color: statusMeta[v.status].color }, geometry: { type: 'Point', coordinates: [v.lng, v.lat] } }))); }
+function vehiclesGeo(data, filter) { return collection(data.vehicles.filter(v => matchesVehicle(v, filter)).map(v => ({ type: 'Feature', properties: { id: v.id, color: statusMeta[v.status].color }, geometry: { type: 'Point', coordinates: [v.lng, v.lat] } }))); }
 function stationFor(data, s) { return s?.kind === 'station' ? data.stations.find(x => x.id === s.id) : s?.kind === 'bay' ? data.stations.find(x => x.id === data.bays.find(b => b.id === s.id)?.stationId) : undefined; }
 function FleetMap({ data, filter, selection, onSelect }) {
     const container = useRef(null), mapRef = useRef(null), latest = useRef({ data, filter, selection, onSelect });
     latest.current = { data, filter, selection, onSelect };
-    const [ready, setReady] = useState(false), [fallback, setFallback] = useState(false), [base, setBase] = useState(window.ROPO_CONFIG?.mapStyleUrl ? '在线底图加载中' : '本地矢量示意图');
+    const [ready, setReady] = useState(false), [fallback, setFallback] = useState(false), [base, setBase] = useState(window.ROPO_CONFIG?.mapStyleUrl ? '在线底图加载中' : '矢量示意');
     const [layers, setLayers] = useState({ vehicles: true, route: false, heat: false, fence: true });
     const [hover, setHover] = useState(null);
     const [zoom, setZoom] = useState(1);
@@ -116,7 +264,7 @@ function FleetMap({ data, filter, selection, onSelect }) {
         }
         catch {
             setFallback(true);
-            setBase('本地示意图 · WebGL 不可用');
+            setBase('SVG · 示意');
             return;
         }
         let timeout;
@@ -143,7 +291,7 @@ function FleetMap({ data, filter, selection, onSelect }) {
                 d.stations.forEach(s => { const el = document.createElement('button'); el.className = 'station-map-label'; el.textContent = s.short; el.setAttribute('aria-label', `地图站点 ${s.name}`); el.onclick = e => { e.stopPropagation(); latest.current.onSelect({ kind: 'station', id: s.id }); }; new maplibregl.Marker({ element: el, anchor: 'top', offset: [0, 16] }).setLngLat([s.lng, s.lat]).addTo(map); });
             map.fitBounds([[121.558, 31.156], [121.646, 31.22]], { padding: 22, duration: 0 });
             setReady(true);
-            setBase(window.ROPO_CONFIG?.mapStyleUrl && map.getStyle().sources && !map.getSource('blocks') ? '在线底图' : '本地矢量示意图');
+            setBase(window.ROPO_CONFIG?.mapStyleUrl && map.getStyle().sources && !map.getSource('blocks') ? '在线底图' : '矢量示意');
             if (timeout)
                 clearTimeout(timeout);
         };
@@ -155,26 +303,26 @@ function FleetMap({ data, filter, selection, onSelect }) {
             add(); });
         map.on('error', e => { console.error('ROPO_MAP_ERROR: ' + e.error?.message); if (/worker/i.test(e.error?.message || '')) {
             setFallback(true);
-            setBase('本地示意图 · 地图引擎降级');
+            setBase('SVG · 示意');
         } if (window.ROPO_CONFIG?.mapStyleUrl && !map.getSource('blocks')) {
-            setBase('在线底图不可用 · 本地示意图');
+            setBase('矢量示意');
             map.setStyle(localStyle());
         } });
         map.on('moveend', () => { if (container.current)
             container.current.dataset.zoom = map.getZoom().toFixed(2); });
-        map.on('webglcontextlost', () => { setFallback(true); setBase('本地示意图 · 图形上下文丢失'); });
+        map.on('webglcontextlost', () => { setFallback(true); setBase('SVG · 示意'); });
         map.on('click', e => { const fs = map.queryRenderedFeatures(e.point, { layers: ['vehicles', 'stations'].filter(id => !!map.getLayer(id)) }); if (fs[0])
             latest.current.onSelect({ kind: fs[0].layer.id === 'vehicles' ? 'vehicle' : 'station', id: fs[0].properties.id }); });
         map.on('mousemove', e => { const fs = map.queryRenderedFeatures(e.point, { layers: ['vehicles', 'stations'].filter(id => !!map.getLayer(id)) }); map.getCanvas().style.cursor = fs.length ? 'pointer' : ''; setHover(fs[0] ? { id: fs[0].properties.id, x: e.point.x, y: e.point.y } : null); });
         map.on('mouseout', () => setHover(null));
         timeout = setTimeout(() => { if (!map.loaded() && !dead) {
             if (window.ROPO_CONFIG?.mapStyleUrl) {
-                setBase('底图超时 · 本地示意图');
+                setBase('矢量示意');
                 map.setStyle(localStyle());
             }
             else {
                 setFallback(true);
-                setBase('本地示意图 · 地图引擎降级');
+                setBase('SVG · 示意');
             }
         } }, 8000);
         const ro = new ResizeObserver(() => map.resize());
@@ -200,11 +348,10 @@ function FleetMap({ data, filter, selection, onSelect }) {
     return React.createElement("div", { className: "map-module" },
         React.createElement("div", { className: "section-heading" },
             React.createElement("div", null,
-                React.createElement("span", { className: "section-kicker" }, "LIVE OPERATIONS"),
                 React.createElement("h2", null,
                     "\u5B9E\u65F6\u8FD0\u8425\u5730\u56FE ",
                     React.createElement("span", { className: "muted-label" }, "\u4E0A\u6D77 \u00B7 \u5F20\u6C5F"))),
-            React.createElement("span", { className: "map-source" },
+            React.createElement("span", { className: "map-source", title: "示意坐标，非导航用途" },
                 React.createElement("span", { className: "dot" }),
                 base)),
         React.createElement("div", { className: "map-stage" },
@@ -234,10 +381,8 @@ function FleetMap({ data, filter, selection, onSelect }) {
                 React.createElement(Layers, { size: 22 }),
                 "\u6B63\u5728\u521D\u59CB\u5316\u77E2\u91CF\u5730\u56FE"),
             React.createElement("div", { className: "map-legend" },
-                Object.entries(statusMeta).map(([k, m]) => React.createElement("span", { key: k },
-                    React.createElement("i", { style: { background: m.color } }),
-                    m.label)),
-                React.createElement("span", { className: "map-attribution" }, "\u793A\u610F\u4F4D\u7F6E \u00B7 \u975E\u5BFC\u822A\u7528\u9014"))),
+                
+                null)),
         React.createElement("div", { className: "map-selection" }, vehicle ? React.createElement(React.Fragment, null,
             React.createElement("span", { className: "selection-icon" },
                 React.createElement(CarFront, { size: 19 })),
@@ -271,15 +416,15 @@ function FleetMap({ data, filter, selection, onSelect }) {
                     " \u4E2A\u8F66\u4F4D \u00B7 ",
                     data.bays.filter(b => b.stationId === station.id && b.status === 'free').length,
                     " \u4E2A\u7A7A\u95F2")),
-            React.createElement("span", { className: "selection-tag" }, "\u5DF2\u8054\u52A8\u8F66\u4F4D\u77E9\u9635"),
+            null,
             React.createElement("button", { className: "icon-button", "aria-label": "\u53D6\u6D88\u5730\u56FE\u9009\u62E9", onClick: () => onSelect(null) },
                 React.createElement(X, { size: 16 }))) : React.createElement(React.Fragment, null,
             React.createElement(MapPin, { size: 18 }),
             React.createElement("span", null, "\u5F20\u6C5F\u8FD0\u8425\u533A"),
             React.createElement("span", { className: "muted" },
-                filter === 'all' ? data.vehicles.length : data.vehicles.filter(v => filter === 'abnormal' ? ['offline', 'maintenance'].includes(v.status) : v.status === filter).length,
+                filter === 'all' ? data.vehicles.length : data.vehicles.filter(v => matchesVehicle(v, filter)).length,
                 " \u8F86\u53EF\u89C1"),
-            React.createElement("span", { className: "selection-hint" }, "\u9009\u62E9\u8F66\u8F86\u3001\u7AD9\u70B9\u6216\u5F02\u5E38\u4E8B\u4EF6\u67E5\u770B\u8BE6\u60C5"))));
+            null)));
 }
 function Schematic({ data, filter, selection, onSelect, layers, zoom }) { const g = localGeography(); const xy = (p) => [(p[0] - bounds[0]) / (bounds[2] - bounds[0]) * 1000, (bounds[3] - p[1]) / (bounds[3] - bounds[1]) * 700]; const path = (f) => f.geometry.coordinates[0].map((p, i) => `${i ? 'L' : 'M'}${xy(p).join(',')}`).join(' ') + 'Z'; return React.createElement("svg", { className: "schematic", viewBox: "0 0 1000 700", preserveAspectRatio: "none", "aria-label": "\u672C\u5730\u8FD0\u8425\u533A\u57DF\u793A\u610F\u56FE" },
     React.createElement("g", { style: { transform: `scale(${zoom})`, transformOrigin: 'center' } },
@@ -291,7 +436,7 @@ function Schematic({ data, filter, selection, onSelect, layers, zoom }) { const 
         layers.fence && React.createElement("rect", { x: "90", y: "65", width: "820", height: "570", rx: "24", fill: "#aaa0de03", stroke: "#9b97c1", strokeOpacity: ".4", strokeDasharray: "6 8" }),
         layers.heat && data.vehicles.filter(v => v.status === 'running').slice(0, 8).map(v => React.createElement("circle", { key: v.id, cx: xy([v.lng, v.lat])[0], cy: xy([v.lng, v.lat])[1], r: "55", fill: "#9d86b3", opacity: ".12" })),
         layers.route && React.createElement("polyline", { points: "200,420 330,420 400,300 550,210", fill: "none", stroke: "#afa3df", strokeWidth: "3", strokeDasharray: "7 5" }),
-        layers.vehicles && data.vehicles.filter(v => filter === 'all' || (filter === 'abnormal' ? ['maintenance', 'offline'].includes(v.status) : v.status === filter)).map(v => React.createElement("g", { key: v.id, role: "button", tabIndex: 0, "aria-label": `地图车辆 ${v.id}`, onClick: () => onSelect({ kind: 'vehicle', id: v.id }), onKeyDown: e => { if (e.key === 'Enter')
+        layers.vehicles && data.vehicles.filter(v => matchesVehicle(v, filter)).map(v => React.createElement("g", { key: v.id, role: "button", tabIndex: 0, "aria-label": `地图车辆 ${v.id}`, onClick: () => onSelect({ kind: 'vehicle', id: v.id }), onKeyDown: e => { if (e.key === 'Enter')
                 onSelect({ kind: 'vehicle', id: v.id }); } },
             React.createElement("circle", { cx: xy([v.lng, v.lat])[0], cy: xy([v.lng, v.lat])[1], r: selection?.id === v.id ? 11 : 6, fill: statusMeta[v.status].color, stroke: "#16181c", strokeWidth: "2" }),
             React.createElement("title", null,
@@ -309,313 +454,129 @@ function Schematic({ data, filter, selection, onSelect, layers, zoom }) { const 
 
 
 /* main.js — plain browser JavaScript */
-const number = (n) => Math.round(n).toLocaleString('en-US');
-function App() {
-    const [data, setData] = useState(seed);
-    const [paused, setPaused] = useState(false);
-    const [now, setNow] = useState(new Date());
-    const [updated, setUpdated] = useState(new Date());
-    const [filter, setFilter] = useState('all');
-    const [selection, setSelection] = useState(null);
-    const [stationId, setStationId] = useState('S01');
-    const [period, setPeriod] = useState('today');
-    const [selectedMetrics, setSelectedMetrics] = useState(['orders', 'utilization']);
-    const [eventFilter, setEventFilter] = useState('all');
-    const [bayFilter, setBayFilter] = useState('all');
-    const [full, setFull] = useState(false);
-    const [notice, setNotice] = useState('');
-    const [bayTip, setBayTip] = useState(null);
-    const m = metrics(data), d = daily(data), cmp = comparison(data), station = data.stations.find(s => s.id === stationId);
-    const bays = data.bays.filter(b => b.stationId === stationId);
-    const events = data.events.filter(e => eventFilter === 'all' || e.severity === eventFilter).sort((a, b) => (a.severity === 'error' ? 0 : 1) - (b.severity === 'error' ? 0 : 1) || b.time.localeCompare(a.time));
-    useEffect(() => { const timer = setInterval(() => setNow(new Date()), 1000); const fs = () => setFull(!!document.fullscreenElement); document.addEventListener('fullscreenchange', fs); return () => { clearInterval(timer); document.removeEventListener('fullscreenchange', fs); }; }, []);
-    useEffect(() => { if (paused)
-        return; const id = setInterval(() => { setData(advance); setUpdated(new Date()); }, Math.max(1000, window.ROPO_CONFIG?.refreshMs || 5000)); return () => clearInterval(id); }, [paused]);
-    useEffect(() => { if (!notice)
-        return; const id = setTimeout(() => setNotice(''), 4000); return () => clearTimeout(id); }, [notice]);
-    function select(s) { setSelection(s); setBayTip(null); if (s?.kind === 'station')
-        setStationId(s.id); if (s?.kind === 'bay') {
-        const b = data.bays.find(b => b.id === s.id);
-        if (b)
-            setStationId(b.stationId);
-    } if (s?.kind === 'vehicle') {
-        const v = data.vehicles.find(v => v.id === s.id);
-        if (v?.stationId)
-            setStationId(v.stationId);
-        if (filter !== 'all' && filter !== v?.status)
-            setFilter('all');
-    } }
-    function selectEvent(e) { if (e.vehicleId)
-        select({ kind: 'vehicle', id: e.vehicleId });
-    else if (e.bayId)
-        select({ kind: 'bay', id: e.bayId });
-    else if (e.stationId)
-        select({ kind: 'station', id: e.stationId }); }
-    function metricToggle(k) { setSelectedMetrics(prev => prev.includes(k) ? prev.length > 1 ? prev.filter(x => x !== k) : prev : prev.length === 2 ? [prev[0], k] : [...prev, k]); }
-    async function toggleFull() { try {
-        if (document.fullscreenElement)
-            await document.exitFullscreen();
-        else
-            await document.documentElement.requestFullscreen();
-    }
-    catch {
-        setNotice('当前浏览器不允许全屏，请使用 F11。');
-    } }
-    const hist = useMemo(() => history('today').slice(0, 11), []);
-    const health = [{ label: '80–100%', n: data.vehicles.filter(v => v.soc >= 80).length, color: '#79b99e' }, { label: '50–79%', n: data.vehicles.filter(v => v.soc >= 50 && v.soc < 80).length, color: '#9996ca' }, { label: '20–49%', n: data.vehicles.filter(v => v.soc >= 20 && v.soc < 50).length, color: '#767e8b' }, { label: '低于20%', n: data.vehicles.filter(v => v.soc < 20).length, color: '#d0ac6d' }];
-    return React.createElement("div", { className: "dashboard" },
-        React.createElement("header", { className: "topbar" },
-            React.createElement("a", { className: "brand", href: window.ROPO_CONFIG?.platformUrl || 'https://abdd33.github.io/ropo-fleet-linear/#overview', title: "\u8FD4\u56DE ROPO Fleet \u4E91\u5E73\u53F0" },
-                React.createElement("span", { className: "brand-mark" }, "\u039B"),
-                React.createElement("span", null,
-                    "ROPO Fleet",
-                    React.createElement("small", null, "\u8FD0\u8425\u6307\u6325\u4E2D\u5FC3"))),
-            React.createElement("span", { className: "header-divider" }),
-            React.createElement("div", { className: "location" },
-                React.createElement(MapPin, { size: 15 }),
-                React.createElement("span", null,
-                    "\u4E0A\u6D77 ",
-                    React.createElement("i", null, "/"),
-                    " \u5F20\u6C5F\u8FD0\u8425\u533A"),
-                React.createElement("span", { className: "env" }, "\u6A21\u62DF\u73AF\u5883")),
-            React.createElement("div", { className: "header-end" },
-                React.createElement("div", { className: "date-time" },
-                    React.createElement("span", null,
-                        now.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' }),
-                        " ",
-                        React.createElement("small", null, ['周日', '周一', '周二', '周三', '周四', '周五', '周六'][now.getDay()])),
-                    React.createElement("strong", null, now.toLocaleTimeString('zh-CN', { hour12: false }))),
-                React.createElement("span", { className: `live-state ${paused ? 'paused' : ''}` },
-                    React.createElement("i", null),
-                    paused ? '更新已暂停' : '模拟实时'),
-                React.createElement("button", { className: "icon-button", onClick: () => setPaused(v => !v), "aria-label": paused ? '恢复实时刷新' : '暂停实时刷新', title: paused ? '恢复实时刷新' : '暂停实时刷新' }, paused ? React.createElement(Play, { size: 16 }) : React.createElement(Pause, { size: 16 })),
-                React.createElement("button", { className: "icon-button", "aria-label": full ? '退出全屏' : '进入全屏', title: full ? '退出全屏' : '进入全屏', onClick: toggleFull }, full ? React.createElement(Minimize2, { size: 17 }) : React.createElement(Maximize2, { size: 17 })))),
-        React.createElement("main", { className: "main-grid" },
-            React.createElement("aside", { className: "left-column" },
-                React.createElement("section", { className: "fleet-overview" },
-                    React.createElement("div", { className: "section-heading" },
-                        React.createElement("div", null,
-                            React.createElement("span", { className: "section-kicker" }, "FLEET OVERVIEW"),
-                            React.createElement("h2", null, "\u8F66\u961F\u8FD0\u8425\u6982\u51B5")),
-                        React.createElement(CarFront, { size: 18, className: "muted" })),
-                    React.createElement("button", { className: `fleet-total ${filter === 'all' ? 'selected' : ''}`, "aria-pressed": filter === 'all', onClick: () => setFilter('all') },
-                        React.createElement("span", null,
-                            "\u8F66\u961F\u603B\u89C4\u6A21 ",
-                            React.createElement("small", null, "\u5168\u90E8\u8F66\u8F86")),
-                        React.createElement("div", null,
-                            React.createElement("strong", null, m.total),
-                            React.createElement("span", null, "\u8F86"),
-                            React.createElement(Spark, { values: [42, 42, 44, 44, 44, 46, 46, 48, 48, 50, 50] }))),
-                    React.createElement("div", { className: "fleet-status-grid" }, ['running', 'idle', 'charging', 'abnormal'].map(k => { const meta = k === 'abnormal' ? { label: '离线 / 维护', color: '#d0ac6d' } : statusMeta[k]; const count = k === 'abnormal' ? m.counts.offline + m.counts.maintenance : m.counts[k]; return React.createElement("button", { key: k, className: `stat-cell ${filter === k ? 'selected' : ''}`, "aria-pressed": filter === k, onClick: () => setFilter(filter === k ? 'all' : k) },
-                        React.createElement("span", null,
-                            React.createElement("i", { className: "dot", style: { background: meta.color } }),
-                            meta.label,
-                            React.createElement(ChevronRight, { size: 12 })),
-                        React.createElement("strong", null,
-                            count,
-                            React.createElement("small", null, "\u8F86")),
-                        React.createElement("div", { className: "mini-bar" },
-                            React.createElement("i", { style: { width: `${count / m.total * 100}%`, background: meta.color } }))); })),
-                    React.createElement("div", { className: "service-state" },
-                        React.createElement("div", { className: "subheading" },
-                            React.createElement("h3", null, "\u5F53\u524D\u670D\u52A1\u72B6\u6001"),
-                            React.createElement("span", null,
-                                m.total,
-                                " \u8F86")),
-                        React.createElement("div", { className: "stacked-bar" }, Object.entries(statusMeta).map(([k, meta]) => React.createElement("button", { key: k, title: `${meta.label} ${m.counts[k]} 辆`, "aria-label": `筛选${meta.label}`, onClick: () => setFilter(k), style: { width: `${m.counts[k] / m.total * 100}%`, background: meta.color } }))),
-                        React.createElement("div", { className: "status-legend" }, Object.entries(statusMeta).map(([k, meta]) => React.createElement("span", { key: k },
-                            React.createElement("i", { style: { background: meta.color } }),
-                            meta.label,
-                            React.createElement("b", null, m.counts[k])))))),
-                React.createElement("section", { className: "online-section" },
-                    React.createElement("div", { className: "online-ring", role: "img", "aria-label": `车辆在线率 ${m.onlineRate}%` },
-                        React.createElement("svg", { viewBox: "0 0 100 100" },
-                            React.createElement("circle", { cx: "50", cy: "50", r: "42", fill: "none", stroke: "#2b2e34", strokeWidth: "5" }),
-                            React.createElement("circle", { cx: "50", cy: "50", r: "42", fill: "none", stroke: "#79b99e", strokeWidth: "5", strokeLinecap: "round", strokeDasharray: `${m.onlineRate / 100 * 264} 264`, transform: "rotate(-90 50 50)" })),
-                        React.createElement("div", null,
-                            React.createElement("strong", null,
-                                m.onlineRate,
-                                React.createElement("small", null, "%")),
-                            React.createElement("span", null, "\u8F66\u8F86\u5728\u7EBF\u7387"))),
-                    React.createElement("div", { className: "online-info" },
-                        React.createElement("span", null,
-                            React.createElement("i", { className: "dot green" }),
-                            "\u5728\u7EBF\u8F66\u8F86 ",
-                            React.createElement("b", null, m.total - m.counts.offline)),
-                        React.createElement("span", null,
-                            React.createElement("i", { className: "dot red" }),
-                            "\u79BB\u7EBF\u8F66\u8F86 ",
-                            React.createElement("b", null, m.counts.offline)),
-                        React.createElement("small", null,
-                            React.createElement(ShieldCheck, { size: 12 }),
-                            " \u5728\u7EBF\u542B\u5145\u7535\u53CA\u7EF4\u62A4\u8F66\u8F86"))),
-                React.createElement("section", { className: "efficiency" },
-                    React.createElement("div", { className: "subheading" },
-                        React.createElement("h2", null, "\u4ECA\u65E5\u8FD0\u8425"),
-                        React.createElement("span", null, "\u8F83\u6628\u65E5\u540C\u671F")),
-                    [{ label: '累计订单', value: number(d.orders), unit: '单', delta: `+${cmp.orders.toFixed(1)}%`, values: hist.map((p, i) => i === hist.length - 1 ? d.orders : hist.slice(0, i + 1).reduce((a, b) => a + b.orders, 0)), color: '#9c9be5' }, { label: '运营里程', value: number(d.distance), unit: 'km', delta: `+${cmp.distance.toFixed(1)}%`, values: hist.map((p, i) => i === hist.length - 1 ? d.distance : hist.slice(0, i + 1).reduce((a, b) => a + b.distance, 0)), color: '#818d9f' }, { label: '车辆利用率', value: m.utilization.toFixed(1), unit: '%', delta: `+${cmp.utilization.toFixed(1)}pp`, values: hist.map((p, i) => i === hist.length - 1 ? m.utilization : p.utilization), color: '#79b99e' }].map(x => React.createElement("div", { className: "efficiency-row", key: x.label },
-                        React.createElement("span", { className: "metric-label" }, x.label),
-                        React.createElement("div", { className: "metric-body" },
-                            React.createElement("strong", null,
-                                x.value,
-                                React.createElement("small", null, x.unit)),
-                            React.createElement(Spark, { values: x.values, color: x.color })),
-                        React.createElement("span", { className: "delta" },
-                            React.createElement(ArrowUpRight, { size: 12 }),
-                            x.delta)))),
-                React.createElement("section", { className: "battery-section" },
-                    React.createElement("div", { className: "subheading" },
-                        React.createElement("h3", null,
-                            React.createElement(BatteryCharging, { size: 14 }),
-                            "\u8F66\u961F\u7535\u91CF\u5206\u5E03"),
-                        React.createElement("span", null, "SOC")),
-                    React.createElement("div", { className: "battery-bars" }, health.map(h => React.createElement("div", { key: h.label },
-                        React.createElement("span", null, h.label),
-                        React.createElement("div", null,
-                            React.createElement("i", { style: { width: `${h.n / m.total * 100}%`, background: h.color } })),
-                        React.createElement("b", null, h.n))))),
-                React.createElement("div", { className: "left-foot" },
-                    React.createElement(Radio, { size: 12 }),
-                    React.createElement("span", null, paused ? '刷新已暂停' : `${(window.ROPO_CONFIG?.refreshMs || 5000) / 1000}s 更新`),
-                    React.createElement("span", null,
-                        "\u540C\u6B65 ",
-                        updated.toLocaleTimeString('zh-CN', { hour12: false })))),
-            React.createElement("div", { className: "center-column" },
-                React.createElement(FleetMap, { data, filter, selection, onSelect: select }),
-                React.createElement("section", { className: "trend-section" },
-                    React.createElement("div", { className: "section-heading" },
-                        React.createElement("div", null,
-                            React.createElement("span", { className: "section-kicker" }, "OPERATIONAL PERFORMANCE"),
-                            React.createElement("h2", null, "\u8FD0\u8425\u8D8B\u52BF")),
-                        React.createElement("div", { className: "segmented", "aria-label": "\u8D8B\u52BF\u65F6\u95F4\u8303\u56F4" }, [{ key: 'today', label: '今日' }, { key: 'week', label: '近7天' }, { key: 'month', label: '近30天' }].map(p => React.createElement("button", { key: p.key, "aria-pressed": period === p.key, className: period === p.key ? 'active' : '', onClick: () => setPeriod(p.key) }, p.label)))),
-                    React.createElement("div", { className: "trend-metrics" },
-                        Object.keys(metricMeta).map(k => React.createElement("button", { key: k, "aria-pressed": selectedMetrics.includes(k), onClick: () => metricToggle(k), className: selectedMetrics.includes(k) ? 'active' : '' },
-                            React.createElement("i", { style: { background: selectedMetrics.includes(k) ? selectedMetrics.indexOf(k) === 0 ? '#a3a0e7' : '#79b99e' : '#494c55' } }),
-                            metricMeta[k].label)),
-                        React.createElement("small", null,
-                            "\u6700\u591A\u4E24\u9879 \u00B7 ",
-                            period === 'today' ? '截至 10:20' : '模拟历史')),
-                    React.createElement(TrendChart, { period: period, selected: selectedMetrics, tick: data.tick, utilization: m.utilization }))),
-            React.createElement("aside", { className: "right-column" },
-                React.createElement("section", { className: "charging-section" },
-                    React.createElement("div", { className: "section-heading" },
-                        React.createElement("div", null,
-                            React.createElement("span", { className: "section-kicker" }, "ENERGY & INFRASTRUCTURE"),
-                            React.createElement("h2", null, "\u5145\u7535\u8D44\u6E90")),
-                        React.createElement(Zap, { size: 18, className: "muted" })),
-                    React.createElement("div", { className: "charge-kpis" },
-                        React.createElement("div", null,
-                            React.createElement("span", null, "\u5145\u7535\u7AD9"),
-                            React.createElement("strong", null,
-                                "3",
-                                React.createElement("small", null, "\u5EA7"))),
-                        React.createElement("div", null,
-                            React.createElement("span", null, "\u5145\u7535\u8F66\u8F86"),
-                            React.createElement("strong", null,
-                                m.counts.charging,
-                                React.createElement("small", null, "\u8F86"))),
-                        React.createElement("div", null,
-                            React.createElement("span", null, "\u7A7A\u95F2\u8F66\u4F4D"),
-                            React.createElement("strong", { className: "text-green" },
-                                m.available,
-                                React.createElement("small", null,
-                                    "/ ",
-                                    data.bays.length)))),
-                    React.createElement("div", { className: "power-line" },
-                        React.createElement("span", null,
-                            React.createElement("i", { className: "dot green" }),
-                            "\u603B\u5145\u7535\u529F\u7387 ",
-                            React.createElement("strong", null,
-                                m.power,
-                                React.createElement("small", null, " kW"))),
-                        React.createElement("span", null,
-                            "\u6869\u5229\u7528\u7387 ",
-                            React.createElement("b", null,
-                                m.chargerUtilization.toFixed(1),
-                                "%"))),
-                    React.createElement("div", { className: "station-list" }, data.stations.map(s => { const bs = data.bays.filter(b => b.stationId === s.id); const used = bs.filter(b => ['charging', 'occupied'].includes(b.status)).length; return React.createElement("button", { key: s.id, className: `station-row ${stationId === s.id ? 'active' : ''}`, "aria-pressed": stationId === s.id, onClick: () => select({ kind: 'station', id: s.id }) },
-                        React.createElement("span", null, s.name),
-                        React.createElement("div", { className: "station-load" }, bs.map(b => React.createElement("i", { key: b.id, className: `load-${b.status}` }))),
-                        React.createElement("b", null,
-                            used,
-                            React.createElement("small", null,
-                                " / ",
-                                s.capacity)),
-                        React.createElement(ChevronRight, { size: 12 })); }))),
-                React.createElement("section", { className: "bays-section" },
-                    React.createElement("div", { className: "subheading" },
-                        React.createElement("h2", null, "\u5145\u7535\u8F66\u4F4D"),
-                        React.createElement("label", { className: "station-select" },
-                            React.createElement("select", { "aria-label": "\u9009\u62E9\u5145\u7535\u7AD9", value: stationId, onChange: e => select({ kind: 'station', id: e.target.value }) }, data.stations.map(s => React.createElement("option", { key: s.id, value: s.id }, s.short))),
-                            React.createElement(ChevronDown, { size: 12 }))),
-                    React.createElement("div", { className: "bay-matrix" }, bays.map(b => { const v = data.vehicles.find(v => v.id === b.vehicleId); const dim = bayFilter !== 'all' && bayFilter !== b.status; const active = selection?.id === b.id || selection?.kind === 'vehicle' && selection.id === b.vehicleId; return React.createElement("button", { key: b.id, className: `bay bay-${b.status} ${active ? 'selected' : ''} ${dim ? 'dim' : ''}`, "aria-label": `${station.short} ${b.number}号车位 ${bayMeta[b.status].label}${v ? ` ${v.id} 电量${Math.round(v.soc)}%` : ''}`, "aria-pressed": !!active, onClick: () => select({ kind: 'bay', id: b.id }), onMouseEnter: () => setBayTip(b), onMouseLeave: () => setBayTip(null), onFocus: () => setBayTip(b), onBlur: () => setBayTip(null) },
-                        React.createElement("span", { className: "bay-number" }, String(b.number).padStart(2, '0')),
-                        b.status === 'charging' ? React.createElement(Zap, { size: 15 }) : b.status === 'fault' ? React.createElement(TriangleAlert, { size: 15 }) : b.status === 'offline' ? React.createElement(Unplug, { size: 15 }) : b.status === 'occupied' ? React.createElement(CarFront, { size: 15 }) : React.createElement("span", { className: "empty-bay-mark" }),
-                        React.createElement("span", { className: "bay-value" }, v && b.status === 'charging' ? `${Math.round(v.soc)}%` : bayMeta[b.status].label),
-                        v && b.status === 'charging' && React.createElement("i", { className: "bay-progress", style: { width: `${v.soc}%` } })); })),
-                    React.createElement("div", { className: "bay-legend", "aria-label": "\u7B5B\u9009\u8F66\u4F4D\u72B6\u6001" }, Object.entries(bayMeta).map(([k, v]) => React.createElement("button", { key: k, "aria-pressed": bayFilter === k, className: bayFilter === k ? 'active' : '', onClick: () => setBayFilter(bayFilter === k ? 'all' : k) },
-                        React.createElement("i", { className: `load-${k}` }),
-                        v.label))),
-                    React.createElement("div", { className: `bay-detail ${bayTip ? 'visible' : ''}`, "aria-live": "polite" }, bayTip ? React.createElement(React.Fragment, null,
-                        React.createElement("strong", null,
-                            String(bayTip.number).padStart(2, '0'),
-                            "\u53F7 \u00B7 ",
-                            bayMeta[bayTip.status].label),
-                        React.createElement("span", null, bayTip.vehicleId ? (bayTip.status === 'charging' ? `${bayTip.vehicleId} · ${Math.round(data.vehicles.find(v => v.id === bayTip.vehicleId)?.soc || 0)}% · ${bayTip.power}kW · ${bayTip.remaining}min` : `${bayTip.vehicleId} · 已停放 / 未充电`) : bayTip.status === 'free' ? '可停放 / 可补能' : bayTip.status === 'occupied' ? '车位已占用 · 未充电' : bayTip.status === 'fault' ? '连接故障 · 待处理' : '设备离线 · 等待恢复')) : React.createElement(React.Fragment, null,
-                        React.createElement("span", null, station.name),
-                        React.createElement("span", null,
-                            bays.filter(b => b.status === 'free').length,
-                            " \u7A7A\u95F2 \u00B7 ",
-                            bays.filter(b => b.status === 'charging').length,
-                            " \u5145\u7535")))),
-                React.createElement("section", { className: "events-section" },
-                    React.createElement("div", { className: "section-heading" },
-                        React.createElement("h2", null,
-                            "\u5F02\u5E38\u4E8B\u4EF6 ",
-                            React.createElement("span", { className: "count-badge" }, data.events.length)),
-                        React.createElement("div", { className: "segmented compact", "aria-label": "\u5F02\u5E38\u7B5B\u9009" },
-                            React.createElement("button", { className: eventFilter === 'all' ? 'active' : '', "aria-pressed": eventFilter === 'all', onClick: () => setEventFilter('all') }, "\u5168\u90E8"),
-                            React.createElement("button", { className: eventFilter === 'error' ? 'active' : '', "aria-pressed": eventFilter === 'error', onClick: () => setEventFilter('error') }, "\u5F02\u5E38"),
-                            React.createElement("button", { className: eventFilter === 'warning' ? 'active' : '', "aria-pressed": eventFilter === 'warning', onClick: () => setEventFilter('warning') }, "\u5173\u6CE8"))),
-                    React.createElement("div", { className: "event-list" }, events.length ? events.map(e => React.createElement("button", { key: e.id, className: `event-row ${e.severity} ${(!!selection && (selection.id === e.vehicleId || selection.id === e.bayId)) ? 'selected' : ''}`, onClick: () => selectEvent(e) },
-                        React.createElement("span", { className: "event-icon" }, e.title.includes('离线') ? React.createElement(WifiOff, { size: 14 }) : e.title.includes('充电') ? React.createElement(PlugZap, { size: 14 }) : e.title.includes('电量') ? React.createElement(BatteryLow, { size: 14 }) : React.createElement(TriangleAlert, { size: 14 })),
-                        React.createElement("span", { className: "event-content" },
-                            React.createElement("strong", null, e.title),
-                            React.createElement("small", null,
-                                e.object,
-                                React.createElement("i", null, "\u00B7"),
-                                e.time)),
-                        React.createElement("span", { className: "event-status" },
-                            e.status,
-                            React.createElement(ChevronRight, { size: 11 })))) : React.createElement("div", { className: "empty-state" },
-                        React.createElement(Check, { size: 20 }),
-                        "\u6682\u65E0\u5F02\u5E38\u4E8B\u4EF6")),
-                    React.createElement("div", { className: "events-foot" },
-                        React.createElement("span", null,
-                            React.createElement(ShieldCheck, { size: 12 }),
-                            "\u6309\u4F18\u5148\u7EA7\u6392\u5E8F"),
-                        React.createElement("span", null,
-                            "\u5F02\u5E38 ",
-                            data.events.filter(e => e.severity === 'error').length,
-                            " \u00B7 \u5173\u6CE8 ",
-                            data.events.filter(e => e.severity === 'warning').length))))),
-        React.createElement("footer", { className: "footer" },
-            React.createElement("span", null,
-                React.createElement(Activity, { size: 11 }),
-                " ROPO FLEET ",
-                React.createElement("i", null, "/"),
-                " OPERATIONS CENTER"),
-            React.createElement("span", null,
-                "\u6A21\u62DF\u6570\u636E \u00B7 50 \u8F86\u8F66 / 3 \u4E2A\u7AD9\u70B9 ",
-                React.createElement("i", null, "\u00B7"),
-                " \u573A\u666F\u65F6\u95F4 10:20"),
-            React.createElement("span", { className: "footer-status" },
-                React.createElement("i", { className: `dot ${paused ? 'yellow' : 'green'}` }),
-                paused ? '已暂停' : '数据链路正常 · 本地模拟')),
-        notice && React.createElement("div", { role: "status", className: "toast" }, notice));
-}
-createRoot(document.getElementById('root')).render(React.createElement(App, null));
 
+/* revision-v2 */
+// Plain JavaScript components; embedded in index.html, no build/runtime imports.
+const h=React.createElement;
+const socGroups=[
+ {key:'soc-high',label:'80–100%',color:'#79b99e',test:v=>v.soc>=80},
+ {key:'soc-mid',label:'50–79%',color:'#9c9be5',test:v=>v.soc>=50&&v.soc<80},
+ {key:'soc-low',label:'20–49%',color:'#858f9e',test:v=>v.soc>=20&&v.soc<50},
+ {key:'soc-critical',label:'低于20%',color:'#d0ac6d',test:v=>v.soc<20}
+];
+function matchesVehicle(v,filter){if(filter==='all')return true;if(filter==='abnormal')return ['maintenance','offline'].includes(v.status);const group=socGroups.find(g=>g.key===filter);return group?group.test(v):v.status===filter;}
+function capacityHistory(period,data){
+ const current=metrics(data).counts,total=data.vehicles.length;
+ const length=period==='today'?11:period==='week'?7:30;
+ return Array.from({length},(_,i)=>{
+   const date=new Date(Date.UTC(2026,10,8-(length-1-i)));
+   const latest=i===length-1;
+   const charging=4+(i%5),maintenance=4,offline=2;
+   const running=Math.round(17+Math.sin(i*.8)*4+i/(length-1)*10);
+   return {label:period==='today'?(latest?'10:20':String(i).padStart(2,'0')+':00'):`${date.getUTCMonth()+1}/${String(date.getUTCDate()).padStart(2,'0')}`,total,...(latest?current:{running,idle:total-running-charging-maintenance-offline,charging,maintenance,offline})};
+ });
+}
+function FieldMeter({data,filter,onFilter,onSelect}){
+ const[mode,setMode]=useState('status'),[hover,setHover]=useState(null),[tip,setTip]=useState(null);
+ const groups=mode==='status'?Object.entries(statusMeta).map(([key,m])=>({key,...m,test:v=>v.status===key})):socGroups;
+ const focused=hover||filter,groupFor=v=>groups.find(g=>g.test(v));
+ const sorted=[...data.vehicles].sort((a,b)=>groups.indexOf(groupFor(a))-groups.indexOf(groupFor(b))||a.id.localeCompare(b.id));
+ function chooseMode(value){setMode(value);setHover(null);setTip(null)}
+ return h('section',{className:'field-meter'},
+  h('div',{className:'section-heading'},h('h2',null,'车队概况'),h('div',{className:'segmented',role:'group','aria-label':'点阵模式'},['status','soc'].map(value=>h('button',{key:value,'aria-pressed':mode===value,onClick:()=>chooseMode(value),className:mode===value?'active':''},value==='status'?'状态':'电量')))),
+  h('div',{className:'field-numbers'},h('button',{className:'field-total',onClick:()=>onFilter('all'),'aria-label':'显示全部50辆车'},h('strong',null,data.vehicles.length),h('span',null,'辆')),h('span',{className:'online-number',title:'在线车辆 / 全部车辆；维护和充电车辆仍计入在线'},'在线率',h('strong',null,metrics(data).onlineRate,h('small',null,'%')))),
+  h('div',{className:'vehicle-field',role:'group','aria-label':'50辆车点阵'},sorted.map(v=>{const g=groupFor(v),dim=focused!=='all'&&focused&&!matchesVehicle(v,focused);return h('button',{key:v.id,className:'vehicle-dot'+(dim?' dim':''),'data-vehicle':v.id,'data-category':g.key,style:{'--vehicle-color':g.color},'aria-label':`${v.id} ${statusMeta[v.status].label} 电量${Math.round(v.soc)}%`,onPointerEnter:()=>{setHover(g.key);setTip(`${v.id} · ${Math.round(v.soc)}%`)},onPointerLeave:()=>{setHover(null);setTip(null)},onFocus:()=>{setHover(g.key);setTip(`${v.id} · ${Math.round(v.soc)}%`)},onBlur:()=>{setHover(null);setTip(null)},onClick:()=>onSelect({kind:'vehicle',id:v.id})},h('span'))})),
+  h('div',{className:'field-context','aria-live':'polite'},hover?h('span',{role:'tooltip'},groups.find(g=>g.key===hover)?.label,' ',data.vehicles.filter(v=>matchesVehicle(v,hover)).length,' 辆',tip?' · '+tip:''):h('span',null,mode==='status'?'实时状态':'SOC'),filter!=='all'&&h('button',{className:'clear-filter',onClick:()=>onFilter('all'),'aria-label':'清除车辆筛选'},'清除筛选',h(X,{size:12}))),
+  h('div',{className:'field-categories'},groups.map(g=>h('button',{key:g.key,className:filter===g.key?'selected':'','aria-pressed':filter===g.key,onPointerEnter:()=>setHover(g.key),onPointerLeave:()=>setHover(null),onFocus:()=>setHover(g.key),onBlur:()=>setHover(null),onClick:()=>onFilter(filter===g.key?'all':g.key),'aria-label':`筛选${g.label}`},h('i',{style:{background:g.color}}),h('span',null,g.label),h('strong',null,data.vehicles.filter(g.test).length)))));
+}
+function CapacityChart({period,data}){
+ const rows=capacityHistory(period,data),[active,setActive]=useState(null);
+ useEffect(()=>setActive(null),[period]);
+ const kinds=Object.keys(statusMeta),W=900,H=190,left=36,right=12,top=12,bottom=30,plotH=H-top-bottom,slot=(W-left-right)/rows.length,barW=Math.min(43,slot*.68),total=data.vehicles.length;
+ return h('div',{className:'capacity-chart','data-total':total},h('svg',{viewBox:`0 0 ${W} ${H}`,preserveAspectRatio:'none',role:'img','aria-label':'各时段运力构成'},
+  [0,25,50].map(n=>h('g',{key:n},h('line',{x1:left,x2:W-right,y1:top+plotH*(1-n/total),y2:top+plotH*(1-n/total),stroke:'#292c33',strokeDasharray:'3 5'}),h('text',{x:left-8,y:top+plotH*(1-n/total)+4,textAnchor:'end',fill:'#7f8795',fontSize:10},n))),
+  rows.map((row,i)=>{let y=top+plotH;const x=left+i*slot+(slot-barW)/2;return h('g',{key:row.label,className:'capacity-column'+(active===i?' active':''),role:'button',tabIndex:0,'aria-label':`${row.label} 共${row.total}辆 ${kinds.map(k=>statusMeta[k].label+row[k]).join(' ')}`,'data-total':row.total,onPointerEnter:()=>setActive(i),onPointerLeave:()=>setActive(null),onFocus:()=>setActive(i),onBlur:()=>setActive(null),onKeyDown:e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();setActive(current=>((current??i)+(e.key==='ArrowRight'?1:-1)+rows.length)%rows.length)}if(e.key==='Escape')setActive(null)}},
+    h('rect',{x:x-5,y:top-4,width:barW+10,height:plotH+8,rx:5,fill:active===i?'#ffffff08':'transparent',stroke:active===i?'#ada5dc':'transparent',strokeWidth:1}),
+    ...kinds.map(k=>{const height=row[k]/total*plotH;y-=height;return h('rect',{key:k,x,y:y+.8,width:barW,height:Math.max(1,height-1.6),rx:2,fill:statusMeta[k].color,opacity:active===null||active===i?1:.3})}),
+    (rows.length<=12||i%4===0||i===rows.length-1)&&h('text',{x:x+barW/2,y:H-9,textAnchor:'middle',fill:'#7f8795',fontSize:10},row.label));})),
+  active!==null&&h('div',{className:'capacity-tooltip',role:'tooltip',style:{left:`${Math.max(2,Math.min(73,active/(rows.length-1)*80))}%`}},h('strong',null,rows[active].label,h('small',null,' / ',rows[active].total,' 辆')),kinds.map(k=>h('span',{key:k},h('i',{style:{background:statusMeta[k].color}}),statusMeta[k].label,h('b',null,rows[active][k])))));
+}
+const parkingLayouts={S01:{rows:[6,6],skew:28,zone:'A / B'},S02:{rows:[4,4,4],skew:24,zone:'A / B / C'},S03:{rows:[6,6],skew:32,zone:'A / B'}};
+function parkingGeometry(stationId){const layout=parkingLayouts[stationId];let index=0;return layout.rows.flatMap((count,row)=>Array.from({length:count},(_,col)=>({number:++index,x:92+col*76+(6-count)*38,y:90+row*194,skew:layout.skew,row})));}
+function ParkingCanvas({data,stationId,selection,onSelect}){
+ const host=useRef(null),gesture=useRef(null),ignoreClick=useRef(false);
+ const[view,setView]=useState({x:0,y:0,scale:1}),[tip,setTip]=useState(null),[dragging,setDragging]=useState(false),[bayFilter,setBayFilter]=useState('all');
+ const station=data.stations.find(s=>s.id===stationId),bays=data.bays.filter(b=>b.stationId===stationId),slots=parkingGeometry(stationId),three=parkingLayouts[stationId].rows.length===3;
+ const canvasH=three?680:510,canvasW=680;
+ const selected=selection?.kind==='bay'?bays.find(b=>b.id===selection.id):selection?.kind==='vehicle'?bays.find(b=>b.vehicleId===selection.id):undefined;
+ useEffect(()=>{setView({x:0,y:0,scale:1});setTip(null);setBayFilter('all');gesture.current=null;setDragging(false)},[stationId]);
+ const clamp=(next)=>{const limitX=110+(next.scale-1)*210,limitY=90+(next.scale-1)*180;return{...next,x:Math.max(-limitX,Math.min(limitX,next.x)),y:Math.max(-limitY,Math.min(limitY,next.y))}};
+ function zoom(delta){setView(v=>clamp({...v,scale:Math.max(.85,Math.min(1.7,+(v.scale+delta).toFixed(2)))}));setTip(null)}
+ function reset(){setView({x:0,y:0,scale:1});setTip(null)}
+ function pointerDown(e){if(e.button!==0||e.target.closest('button'))return;gesture.current={id:e.pointerId,startX:e.clientX,startY:e.clientY,x:view.x,y:view.y,moved:false,bayId:e.target.closest('[data-bay]')?.getAttribute('data-bay')};ignoreClick.current=false;e.currentTarget.setPointerCapture(e.pointerId)}
+ function pointerMove(e){const g=gesture.current;if(!g)return;const dx=e.clientX-g.startX,dy=e.clientY-g.startY;if(Math.hypot(dx,dy)>5){g.moved=true;setDragging(true);setTip(null)}if(g.moved)setView(v=>clamp({...v,x:g.x+dx/(host.current.clientWidth/canvasW),y:g.y+dy/(host.current.clientHeight/canvasH)}))}
+ function pointerUp(e){const g=gesture.current;if(!g)return;ignoreClick.current=true;gesture.current=null;setDragging(false);if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);if(!g.moved){if(g.bayId)onSelect(selected?.id===g.bayId?null:{kind:'bay',id:g.bayId});else{onSelect(null);setTip(null)}}}
+ function showTip(e,b){if(gesture.current?.moved)return;const r=host.current.getBoundingClientRect();setTip({bay:b,x:Math.max(8,Math.min(r.width-220,e.clientX-r.left+12)),y:Math.max(8,Math.min(r.height-100,e.clientY-r.top+10))})}
+ function bayClick(e,b){e.stopPropagation();if(ignoreClick.current){ignoreClick.current=false;return}onSelect(selected?.id===b.id?null:{kind:'bay',id:b.id})}
+ const color=b=>b.status==='charging'?'#a7a0db':b.status==='fault'?'#d78390':b.status==='occupied'?'#9ca9ba':b.status==='offline'?'#5d6571':'#638a78';
+ function detail(b){const v=data.vehicles.find(v=>v.id===b.vehicleId);return{v,text:v?`${v.id} · ${Math.round(v.soc)}%`:'—',extra:b.status==='charging'?`${b.power} kW · ${b.remaining} 分钟` :bayMeta[b.status].label}}
+ return h('section',{className:'parking-section'},
+  h('div',{className:'section-heading'},h('h2',null,'充电车位'),h('span',{className:'layout-mark',title:'未提供站点平面图，当前车位排、通道与出入口为示意布局'},'布局示意')),
+  h('div',{ref:host,className:'parking-viewport'+(dragging?' dragging':''),'data-view':JSON.stringify(view),'data-station':stationId,onPointerDown:pointerDown,onPointerMove:pointerMove,onPointerUp:pointerUp,onPointerCancel:e=>{gesture.current=null;ignoreClick.current=true;setDragging(false)},onClick:e=>{if(ignoreClick.current){ignoreClick.current=false;return}if(!e.target.closest('[data-bay]')){onSelect(null);setTip(null)}}},
+   h('svg',{className:'parking-svg',viewBox:`0 0 ${canvasW} ${canvasH}`,role:'group','aria-label':station.name+'停车场画布',onKeyDown:e=>{if(e.key==='Escape'){onSelect(null);setTip(null)}},'data-layout':'schematic'},
+    h('defs',null,h('pattern',{id:'parking-hatch',width:7,height:7,patternUnits:'userSpaceOnUse',patternTransform:'rotate(35)'},h('line',{x1:0,x2:0,y1:0,y2:7,stroke:'#4e5663',strokeWidth:2}))),
+    h('g',{transform:`translate(${canvasW/2+view.x} ${canvasH/2+view.y}) scale(${view.scale}) translate(${-canvasW/2} ${-canvasH/2})`},
+     h('rect',{x:34,y:32,width:612,height:canvasH-64,rx:15,fill:'#161a1e',stroke:'#2a3137',strokeWidth:1}),
+     ...parkingLayouts[stationId].rows.map((n,row)=>h('g',{key:'lane'+row},h('text',{x:56,y:108+row*194,fill:'#5c6672',fontSize:14},String.fromCharCode(65+row)),h('path',{d:`M 62 ${236+row*194} H 606`,stroke:'#333b43',strokeWidth:1,strokeDasharray:'8 10'}),h('path',{d:`M 300 ${230+row*194} l 12 6 -12 6 M 280 ${236+row*194} h32`,fill:'none',stroke:'#6a747e',strokeWidth:2}))),
+     h('text',{x:52,y:canvasH-49,fill:'#788d83',fontSize:12},'入口'),h('path',{d:`M 92 ${canvasH-54} h28 l-7 -5 m7 5 -7 5`,fill:'none',stroke:'#788d83',strokeWidth:1.5}),
+     h('text',{x:570,y:canvasH-49,fill:'#788d83',fontSize:12},'出口'),h('path',{d:`M 535 ${canvasH-54} h25 l-7 -5 m7 5 -7 5`,fill:'none',stroke:'#788d83',strokeWidth:1.5}),
+     ...slots.map(slot=>{const b=bays.find(b=>b.number===slot.number),active=selected?.id===b.id,c=color(b),isDim=bayFilter!=='all'&&bayFilter!==b.status;return h('g',{key:b.id,'data-bay':b.id,role:'button',tabIndex:0,'aria-label':`${station.short} ${b.number}号车位 ${bayMeta[b.status].label}`,'aria-pressed':active,className:'parking-bay'+(active?' selected':'')+(isDim?' dim':''),transform:`translate(${slot.x} ${slot.y})`,onPointerEnter:e=>showTip(e,b),onPointerLeave:()=>setTip(null),onFocus:()=>setTip({bay:b,x:12,y:12}),onBlur:()=>setTip(null),onClick:e=>bayClick(e,b),onKeyDown:e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();onSelect(active?null:{kind:'bay',id:b.id})}}},
+      h('path',{className:'bay-shape',d:`M 0 112 L ${slot.skew} 0 L ${slot.skew+74} 0 L 74 112 Z`,fill:b.status==='charging'?'#9b91cf15':b.status==='fault'?'#d783900c':b.status==='offline'?'url(#parking-hatch)':'transparent',stroke:active?'#d3c9ff':c,strokeWidth:active?2.7:1.5,strokeDasharray:b.status==='offline'?'5 5':undefined}),
+      b.status==='charging'?h('path',{d:`M ${slot.skew+27} 32 l-16 24 h16 l-9 25 25-32 h-17 l9-17`,fill:'none',stroke:c,strokeWidth:2.5,strokeLinejoin:'round'}):b.status==='occupied'?h('g',{transform:`translate(${slot.skew+7} 31) rotate(14 18 26)`,stroke:c,strokeWidth:1.8,fill:'#96a5b411'},h('rect',{x:5,y:0,width:24,height:49,rx:7}),h('path',{d:'M 7 12 h20 M 7 36 h20 M 9 17 h16 v15 H9Z',fill:'none'})):b.status==='fault'?h('g',{transform:`translate(${slot.skew+6} 36)`,fill:'none',stroke:c,strokeWidth:2},h('path',{d:'M 21 0 L 41 35 H1 Z',strokeLinejoin:'round'}),h('path',{d:'M21 11v12 M21 28v1'})):b.status==='offline'?h('path',{d:`M ${slot.skew+8} 54 h30`,stroke:c,strokeWidth:2}):null,
+      null);
+     })
+    )),
+   h('div',{className:'parking-controls'},h('button',{'aria-label':'放大停车场',onClick:()=>zoom(.15)},h(Plus,{size:15})),h('span',null,Math.round(view.scale*100),'%'),h('button',{'aria-label':'缩小停车场',onClick:()=>zoom(-.15)},h(Minus,{size:15})),h('button',{'aria-label':'重置停车场视图',onClick:reset},h(LocateFixed,{size:15}))),
+   tip&&!dragging&&h('div',{className:'parking-tooltip',role:'tooltip',style:{left:tip.x,top:tip.y}},h('strong',null,String(tip.bay.number).padStart(2,'0'),'号 · ',bayMeta[tip.bay.status].label),h('span',null,detail(tip.bay).text),h('small',null,detail(tip.bay).extra))),
+  h('div',{className:'parking-legend',role:'group','aria-label':'车位状态筛选'},Object.entries(bayMeta).map(([k,m])=>h('button',{key:k,'aria-pressed':bayFilter===k,className:bayFilter===k?'active':'',onClick:()=>setBayFilter(bayFilter===k?'all':k)},h('i',{className:'load-'+k}),m.label))),
+  h('div',{className:'parking-selection','aria-live':'polite'},selected?h(React.Fragment,null,h('strong',null,String(selected.number).padStart(2,'0'),'号位'),h('span',null,detail(selected).text),h('span',null,detail(selected).extra),h('button',{'aria-label':'取消车位选择',onClick:()=>onSelect(null)},h(X,{size:13}))):h(React.Fragment,null,h('span',null,station.name),h('span',null,bays.filter(b=>b.status==='free').length,' 空闲 / ',bays.length))));
+}
+function TodaySummary({data,onRefresh,refreshedAt}){
+ const[pull,setPull]=useState(0),[refreshing,setRefreshing]=useState(false),[fresh,setFresh]=useState(false),drag=useRef(null),distance=useRef(0),timer=useRef(null);
+ const d=daily(data),m=metrics(data),cmp=comparison(data),hist=history('today').slice(0,11);
+ useEffect(()=>()=>clearTimeout(timer.current),[]);
+ function refresh(){if(refreshing)return;setRefreshing(true);onRefresh();setFresh(true);timer.current=setTimeout(()=>{setRefreshing(false);setFresh(false)},450)}
+ return h('section',{className:'today-summary'+(fresh?' refreshed':''),'data-refresh-time':refreshedAt.toISOString(),onPointerDown:e=>{if(e.button!==0||e.target.closest('button'))return;drag.current={x:e.clientX,y:e.clientY};distance.current=0;e.currentTarget.setPointerCapture(e.pointerId)},onPointerMove:e=>{if(!drag.current)return;const dx=e.clientX-drag.current.x,dy=e.clientY-drag.current.y;distance.current=Math.abs(dx)>Math.abs(dy)?0:Math.max(0,Math.min(92,dy));setPull(distance.current)},onPointerUp:e=>{if(!drag.current)return;const should=distance.current>=64;drag.current=null;distance.current=0;setPull(0);if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);if(should)refresh()},onPointerCancel:()=>{drag.current=null;distance.current=0;setPull(0)}},
+  h('div',{className:'section-heading'},h('h2',null,'今日运营'),h('button',{className:'summary-refresh'+(refreshing?' refreshing':''),'aria-label':'刷新今日运营',title:'刷新订单、里程、利用率及同步时间',disabled:refreshing,onClick:refresh},h(Radio,{size:14}),h('span',null,'刷新'))),
+  h('div',{className:'pull-indicator','aria-hidden':true,style:{opacity:pull?1:0,transform:`translateY(${Math.min(16,pull*.2)}px) rotate(${pull*2}deg)`}},h(ArrowDownRight,{size:15})),
+  [{label:'累计订单',value:number(d.orders),unit:'单',delta:`+${cmp.orders.toFixed(1)}%`,values:hist.map((p,i)=>i===hist.length-1?d.orders:hist.slice(0,i+1).reduce((a,b)=>a+b.orders,0)),color:'#9c9be5'},
+   {label:'运营里程',value:number(d.distance),unit:'km',delta:`+${cmp.distance.toFixed(1)}%`,values:hist.map((p,i)=>i===hist.length-1?d.distance:hist.slice(0,i+1).reduce((a,b)=>a+b.distance,0)),color:'#818d9f'},
+   {label:'车辆利用率',value:m.utilization.toFixed(1),unit:'%',delta:`+${cmp.utilization.toFixed(1)}pp`,values:hist.map((p,i)=>i===hist.length-1?m.utilization:p.utilization),color:'#79b99e'}].map(item=>h('div',{className:'today-metric',key:item.label},h('span',{className:'metric-label'},item.label),h('div',{className:'metric-body'},h('strong',null,item.value,h('small',null,item.unit)),h(Spark,{values:item.values,color:item.color})),h('span',{className:'delta',title:'较昨日同期 · 模拟数据'},h(ArrowUpRight,{size:12}),item.delta))),
+  h('div',{className:'summary-updated'},h(Clock3,{size:11}),h('span',null,refreshedAt.toLocaleTimeString('zh-CN',{hour12:false})),pull>=64&&h('span',{className:'pull-ready'},'松开刷新')));
+}
+const number=n=>Math.round(n).toLocaleString('en-US');
+function App(){
+ const[data,setData]=useState(seed),[paused,setPaused]=useState(false),[now,setNow]=useState(new Date()),[updated,setUpdated]=useState(new Date()),[summaryTime,setSummaryTime]=useState(new Date());
+ const[filter,setFilter]=useState('all'),[selection,setSelection]=useState(null),[stationId,setStationId]=useState('S01'),[period,setPeriod]=useState('today'),[chartMode,setChartMode]=useState('capacity'),[selectedMetrics,setSelectedMetrics]=useState(['orders','utilization']),[full,setFull]=useState(false),[notice,setNotice]=useState('');
+ const m=metrics(data),station=data.stations.find(s=>s.id===stationId);
+ useEffect(()=>{const id=setInterval(()=>setNow(new Date()),1000);const changed=()=>setFull(!!document.fullscreenElement);document.addEventListener('fullscreenchange',changed);return()=>{clearInterval(id);document.removeEventListener('fullscreenchange',changed)}},[]);
+ useEffect(()=>{if(paused)return;const id=setInterval(()=>{setData(advance);setUpdated(new Date());setSummaryTime(new Date())},Math.max(1000,window.ROPO_CONFIG?.refreshMs||5000));return()=>clearInterval(id)},[paused]);
+ useEffect(()=>{if(!notice)return;const id=setTimeout(()=>setNotice(''),3500);return()=>clearTimeout(id)},[notice]);
+ function select(s){setSelection(s);if(s?.kind==='station')setStationId(s.id);if(s?.kind==='bay'){const b=data.bays.find(b=>b.id===s.id);if(b)setStationId(b.stationId)}if(s?.kind==='vehicle'){const v=data.vehicles.find(v=>v.id===s.id);if(v?.stationId)setStationId(v.stationId);if(v&&!matchesVehicle(v,filter))setFilter('all')}}
+ function refreshSummary(){setData(s=>({...s,tick:s.tick+6}));setSummaryTime(new Date());setUpdated(new Date())}
+ function metricToggle(k){setSelectedMetrics(prev=>prev.includes(k)?prev.length>1?prev.filter(x=>x!==k):prev:prev.length===2?[prev[0],k]:[...prev,k])}
+ async function toggleFull(){try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen()}catch{setNotice('当前浏览器不允许全屏，请使用 F11。')}}
+ return h('div',{className:'dashboard revision-dashboard'},
+ h('header',{className:'topbar'},h('a',{className:'brand',href:window.ROPO_CONFIG?.platformUrl||'https://abdd33.github.io/ropo-fleet-linear/#overview',title:'返回 ROPO Fleet 云平台'},h('span',{className:'brand-mark'},'Λ'),h('span',null,'ROPO Fleet',h('small',null,'运营指挥中心'))),h('span',{className:'header-divider'}),h('div',{className:'location'},h(MapPin,{size:15}),h('span',null,'上海',h('i',null,'/'),'张江运营区'),h('span',{className:'env'},'模拟环境')),h('div',{className:'header-end'},h('div',{className:'date-time'},h('span',null,now.toLocaleDateString('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit'})),h('strong',null,now.toLocaleTimeString('zh-CN',{hour12:false}))),h('span',{className:'live-state'+(paused?' paused':'')},h('i'),paused?'已暂停':'模拟实时'),h('button',{className:'icon-button','aria-label':paused?'恢复实时刷新':'暂停实时刷新',onClick:()=>setPaused(p=>!p)},h(paused?Play:Pause,{size:16})),h('button',{className:'icon-button','aria-label':full?'退出全屏':'进入全屏',onClick:toggleFull},h(full?Minimize2:Maximize2,{size:17})))),
+ h('main',{className:'main-grid'},
+  h('aside',{className:'left-column'},h(FieldMeter,{data,filter,onFilter:setFilter,onSelect:select}),h(TodaySummary,{data,onRefresh:refreshSummary,refreshedAt:summaryTime}),h('div',{className:'left-foot'},h(Radio,{size:12}),h('span',null,paused?'已暂停':'5s'),h('span',null,updated.toLocaleTimeString('zh-CN',{hour12:false})))),
+  h('div',{className:'center-column'},h(FleetMap,{data,filter,selection,onSelect:select}),h('section',{className:'trend-section'},h('div',{className:'section-heading'},h('div',{className:'chart-mode-tabs',role:'group','aria-label':'运营图表形态'},[{key:'capacity',label:'运力构成'},{key:'trend',label:'运营趋势'}].map(tab=>h('button',{key:tab.key,'aria-pressed':chartMode===tab.key,className:chartMode===tab.key?'active':'',onClick:()=>setChartMode(tab.key)},tab.label))),h('div',{className:'segmented',role:'group','aria-label':'趋势时间范围'},[{key:'today',label:'今日'},{key:'week',label:'近7天'},{key:'month',label:'近30天'}].map(p=>h('button',{key:p.key,'aria-pressed':period===p.key,className:period===p.key?'active':'',onClick:()=>setPeriod(p.key)},p.label)))),
+   chartMode==='capacity'?h(React.Fragment,null,h('div',{className:'capacity-legend'},Object.entries(statusMeta).map(([k,value])=>h('span',{key:k},h('i',{style:{background:value.color}}),value.label))),h(CapacityChart,{period,data})):h(React.Fragment,null,h('div',{className:'trend-metrics',title:'最多同时展示两项指标'},Object.keys(metricMeta).map(k=>h('button',{key:k,'aria-pressed':selectedMetrics.includes(k),className:selectedMetrics.includes(k)?'active':'',onClick:()=>metricToggle(k)},h('i',{style:{background:selectedMetrics.includes(k)?selectedMetrics.indexOf(k)===0?'#a3a0e7':'#79b99e':'#494c55'}}),metricMeta[k].label))),h(TrendChart,{period,selected:selectedMetrics,tick:data.tick,utilization:m.utilization})))),
+  h('aside',{className:'right-column'},h('section',{className:'charging-section'},h('div',{className:'section-heading'},h('h2',null,'充电资源'),h(Zap,{size:17,className:'muted'})),h('div',{className:'charge-kpis'},[{label:'站点',value:3,unit:'座'},{label:'充电',value:m.counts.charging,unit:'辆'},{label:'空闲车位',value:m.available,unit:'/ 36'}].map(item=>h('div',{key:item.label},h('span',null,item.label),h('strong',{className:item.label==='空闲车位'?'text-green':''},item.value,h('small',null,item.unit))))),h('div',{className:'power-line'},h('span',null,h('i',{className:'dot green'}),'总功率',h('strong',null,m.power,h('small',null,' kW'))),h('span',{title:'充电中的车位数 / 全部36个车位'},'桩利用率 ',h('b',null,m.chargerUtilization.toFixed(1),'%'))),h('div',{className:'station-list'},data.stations.map(s=>{const bs=data.bays.filter(b=>b.stationId===s.id);return h('button',{key:s.id,className:'station-row'+(stationId===s.id?' active':''),'aria-pressed':stationId===s.id,onClick:()=>select({kind:'station',id:s.id})},h('span',null,s.name),h('div',{className:'station-load'},bs.map(b=>h('i',{key:b.id,className:'load-'+b.status}))),h('b',null,bs.filter(b=>b.status==='charging'||b.status==='occupied').length,h('small',null,' / ',bs.length)),h(ChevronRight,{size:12}))}))),h(ParkingCanvas,{data,stationId,selection,onSelect:select}))),
+ h('footer',{className:'footer'},h('span',null,h(Activity,{size:11}),'ROPO FLEET'),h('span',null,'模拟场景 · 10:20'),h('span',{className:'footer-status'},h('i',{className:'dot '+(paused?'yellow':'green')}),paused?'已暂停':'数据同步正常')),notice&&h('div',{className:'toast',role:'status'},notice));
+}
+
+createRoot(document.getElementById('root')).render(h(App));
 }
 </script>
 <script>
