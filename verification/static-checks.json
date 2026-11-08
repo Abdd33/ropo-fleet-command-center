@@ -1,0 +1,81 @@
+{
+  "scope": "Static JavaScript/CDN compatibility checks only; no browser or file:// runtime claim",
+  "checks": [
+    {
+      "name": "inline-script-0 parses as classic JavaScript",
+      "pass": true
+    },
+    {
+      "name": "inline-script-1 parses as classic JavaScript",
+      "pass": true
+    },
+    {
+      "name": "inline-script-2 parses as classic JavaScript",
+      "pass": true
+    },
+    {
+      "name": "no local ES modules, require, worker paths or local fetch",
+      "pass": true
+    },
+    {
+      "name": "CSS is byte-for-byte retained",
+      "pass": true
+    },
+    {
+      "name": "all business JavaScript is embedded",
+      "pass": true
+    },
+    {
+      "name": "no local script/src or stylesheet/href requests",
+      "pass": true
+    },
+    {
+      "name": "react CDN classic script exposes expected API",
+      "pass": true
+    },
+    {
+      "name": "react-dom CDN classic script exposes expected API",
+      "pass": true
+    },
+    {
+      "name": "lucide CDN classic script exposes expected API",
+      "pass": true
+    },
+    {
+      "name": "echarts CDN classic script exposes expected API",
+      "pass": true
+    },
+    {
+      "name": "maplibre CDN classic script exposes expected API",
+      "pass": true
+    },
+    {
+      "name": "converted app entry exists",
+      "pass": true
+    }
+  ],
+  "apis": [
+    {
+      "name": "react",
+      "ready": true
+    },
+    {
+      "name": "react-dom",
+      "ready": true
+    },
+    {
+      "name": "lucide",
+      "ready": true
+    },
+    {
+      "name": "echarts",
+      "ready": true
+    },
+    {
+      "name": "maplibre",
+      "ready": true
+    }
+  ],
+  "fileBytes": 95078,
+  "browserFileVerification": "Blocked by browser automation URL security policy; requires user manual confirmation"
+}
